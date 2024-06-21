@@ -3,14 +3,11 @@ const Schema = mongoose.Schema;
 
 const chatSchema = new Schema(
   {
-    userId: {
+    user: {
+      type: "string",
       required: true,
     },
-    request: {
-      type: String,
-      required: true,
-    },
-    response: {
+    message: {
       type: String,
       required: true,
     },

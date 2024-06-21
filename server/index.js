@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const router = express.Router();
 const authRoutes = require("./routes/authRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 
 dotenv.config();
 const app = express();
@@ -31,5 +32,8 @@ router.use(
 
 // handeling routes
 app.use("/api/auth", authRoutes);
+
+// chat routes
+app.use('/api/chat', chatRoutes);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
