@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 var validator = require("email-validator");
+const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
   try {
@@ -10,7 +11,7 @@ const register = async (req, res) => {
     }
 
     if (!validator.validate(email)) {
-      return res.status(400).json({ error: "Invalid email format" });
+      return res.json({ error: "Invalid email format" });
     }
 
     if (password.length < 6) {
@@ -35,12 +36,38 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
     if (!email || !password) {
       return res.json({ error: "All fields are required" });
     }
+
+    if (!validator.validate(email)) {
+      return res.json({ error: "Invalid email format" });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.json({ error: "User does not exist. Please register" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.json({ error: "Invalid credentials. Please try again" });
+    }
+
+    // jwt
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "1d",
+    });
+    const userData = await User.findById(user._id).select("-password");
+
+    res
+      .cookie("token", token, { httpOnly: true })
+      .json({ message: "Login successful", user: userData });
   } catch (err) {
+    console.log(err);
     res.json({ error: "Server Error!" });
   }
 };
 
-module.exports = { register };
+module.exports = { register, login };
