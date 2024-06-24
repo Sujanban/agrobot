@@ -7,8 +7,10 @@ const chat = async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // getting user prompt
-    // const prompt = req.body.prompt;
-    const prompt = 'Hello';
+    const prompt = req.body.prompt;
+    console.log(prompt);
+    console.log(req.body)
+    // const prompt = 'Hello';
 
     // Save user prompt to database
     const userMessage = new Chat({ user: "user", message: prompt });
