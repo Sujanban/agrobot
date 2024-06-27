@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import React from 'react'
 import Howitworks from '@/components/Howitworks'
 import Services from '@/components/Services'
+import Footer from '@/components/Footer'
 
 const Index = () => {
   return (
@@ -11,6 +12,7 @@ const Index = () => {
       <Hero />
       <Services/>
       <Howitworks/>
+      <Footer/>
     </>
   )
 }
