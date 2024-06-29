@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
-import { IoHomeOutline,IoChatboxOutline  } from "react-icons/io5";
+import { IoHomeOutline, IoChatboxOutline } from "react-icons/io5";
 import { TbHotelService } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { SiAboutdotme } from "react-icons/si";
@@ -46,7 +46,7 @@ const Navbar = () => {
           {
             menuItems.map(item => (
               <Link className='flex items-center space-x-1' key={item.id} to={item.path}>
-                <span>{item.icon}</span> 
+                <span>{item.icon}</span>
                 <span>{item.name}</span>
               </Link>
             ))
@@ -60,8 +60,8 @@ const Navbar = () => {
 
 
       {/* mobile navigation */}
-      <div className='md:hidden p-4 bg-slate-200 h-screen w-screen overflow-hidden'>
-        <div className='flex justify-between align-center'>
+      <div className='md:hidden p-4 w-screen overflow-hidden'>
+        <div className='py-2 flex justify-between align-center'>
           <Link className='text-xl font-bold'>Agrobot</Link>
           <button onClick={() => setToggleNavbar(!toggleNavbar)}>
             <HiMiniBars3BottomRight className='text-xl' />
@@ -69,16 +69,18 @@ const Navbar = () => {
         </div>
         {
           toggleNavbar &&
-          <div className='flex flex-col'>
-            <nav className='flex-grow grid py-2 '>
-              {
-                menuItems.map(item => (
-                  <Link className='py-2 hover:bg-slate-100 rounded-xl' key={item.id} to={item.path}>{item.name}</Link>
-                ))
-              }
-            </nav>
+          <div className=' p-4 absolute h-[90vh] w-[350px] bg-white z-50 top-[80px] left-0 grid border-r gap-1'>
+            <div>
+              <nav className='grid gap-1'>
+                {
+                  menuItems.map(item => (
+                    <Link className='py-2 mx-auto hover:bg-slate-100 rounded-xl' key={item.id} to={item.path}>{item.name}</Link>
+                  ))
+                }
+              </nav>
 
-            <div className='py-2'>
+            </div>
+            <div className='absolute bottom-4  justify-center w-full flex '>
               <Link className='rounded-full border border-green px-4 py-2'>Get Started</Link>
             </div>
           </div>
