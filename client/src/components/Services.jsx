@@ -5,7 +5,9 @@ const Services = () => {
     return (
         <section className='bg-slate-100'>
             <div className='px-4 py-20 max-w-7xl mx-auto '>
-                <h1 className='text-2xl max-w-xs'><span className='text-[#878686]'>Smart Farming</span> : We Provides Best Services For Your Garden</h1>
+                <h1 className='text-4xl font-medium max-w-md'>
+                    <span className='text-green'>Smart Farming</span>
+                     : We Provides Best Services For Your Garden</h1>
                 <div className='py-8 pb-20 flex items-center justify-between gap-4 flex-wrap'>
                     <div className='flex flex-col text-sm space-y-2'>
                         <li className='list-none'>
