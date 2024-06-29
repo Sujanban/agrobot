@@ -33,25 +33,19 @@ const Navbar = () => {
       name: 'Contact',
       icon: <IoChatboxOutline />,
       path: '/contact'
-    },
-    {
-      id: 5,
-      name: 'About',
-      icon: <SiAboutdotme />,
-      path: '/about'
     }
   ]
   return (
     <header className='shadow'>
       {/* desktop nav */}
-      <div className=' hidden sm:flex h-[10vh] max-w-7xl mx-auto items-center justify-between'>
+      <div className='p-4 hidden md:flex h-[10vh] max-w-7xl mx-auto items-center justify-between'>
         <div>
           <Link className='text-xl font-bold'>Agrobot</Link>
         </div>
-        <nav className='flex items-center space-x-4'>
+        <nav className='flex items-center gap-6'>
           {
             menuItems.map(item => (
-              <Link className='shadow px-4 py-2 bg-white transition-all duration-300 ease-in-out hover:shadow-xl rounded-xl flex items-center space-x-2' key={item.id} to={item.path}>
+              <Link className='flex items-center space-x-1' key={item.id} to={item.path}>
                 <span>{item.icon}</span> 
                 <span>{item.name}</span>
               </Link>
@@ -60,13 +54,13 @@ const Navbar = () => {
         </nav>
 
         <div className='flex items-center space-x-2'>
-          <Link className='rounded-full border border-green px-4 py-2'>Get Started</Link>
+          <Link className='rounded-full border text-white bg-green px-4 py-2'>Get Started</Link>
         </div>
       </div>
 
 
       {/* mobile navigation */}
-      <div className='sm:hidden p-4 bg-slate-200 h-screen w-screen overflow-hidden'>
+      <div className='md:hidden p-4 bg-slate-200 h-screen w-screen overflow-hidden'>
         <div className='flex justify-between align-center'>
           <Link className='text-xl font-bold'>Agrobot</Link>
           <button onClick={() => setToggleNavbar(!toggleNavbar)}>
