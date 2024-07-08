@@ -54,7 +54,7 @@ const Navbar = () => {
         </nav>
 
         <div className='flex items-center space-x-2'>
-          <Link className='rounded-full border text-white bg-green px-4 py-2'>Get Started</Link>
+          <Link to={"/register"} className='rounded-full border text-white bg-green px-4 py-2'>Get Started</Link>
         </div>
       </div>
 
@@ -81,7 +81,7 @@ const Navbar = () => {
 
             </div>
             <div className='absolute bottom-4  justify-center w-full flex '>
-              <Link className='rounded-full border border-green px-4 py-2'>Get Started</Link>
+              <Link to={"/register"} className='rounded-full border border-green px-4 py-2'>Get Started</Link>
             </div>
           </div>
         }
