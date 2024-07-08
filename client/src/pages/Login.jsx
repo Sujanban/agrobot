@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import signupimg from '../assets/signup-image.png'
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <div className='h-screen'>
       <div className='grid grid-cols-3 h-full'>
@@ -28,9 +30,14 @@ const Login = () => {
                 <input type="text" placeholder='E-mail'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
               </div>
-              <div>
+              <div className='relative'>
                 <input type="text" placeholder='Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
+                {
+                  showPassword ?
+                    <FaRegEye onClick={() => setShowPassword(!showPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' /> :
+                    <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' />
+                }
               </div>
               <p className='text-xs text-gray-500'>By confirming your email, you agree to our Terms of Service and that you have read and understood our Privacy Policy.</p>
               <input type="submit" className='px-4 py-3 rounded-md bg-stone-900 hover:bg-stone-800 transition-all ease-in-out duration-200 cursor-pointer text-white' value={"Login"} />
