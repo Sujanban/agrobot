@@ -5,6 +5,10 @@ import Contact from './pages/Contact'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/dashboard/Dashboard'
+import Weather from './pages/dashboard/Weather'
+import Farmbot from './pages/dashboard/Farmbot'
+import Diseasepredictor from './pages/dashboard/Diseasepredictor'
+import Users from './pages/dashboard/Users'
 
 
 function App() {
@@ -20,6 +24,10 @@ function App() {
 
         {/* protected routes */}
         <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/weather" element={<Weather/>} />
+        <Route path="/farmbot" element={<Farmbot/>} />
+        <Route path="/diseasepredictor" element={<Diseasepredictor/>} />
+        <Route path="/users" element={<Users/>} />
       </Routes>
     </>
   )
