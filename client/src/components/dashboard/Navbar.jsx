@@ -67,7 +67,7 @@ const Navbar = () => {
                             <IoIosArrowDropleft
                                 size={36}
                                 onClick={() => setMinNavbar(!minNavbar)}
-                                className='p-2 cursor-pointer shadow  rounded-full fixed top-7 left-[19rem]' />
+                                className='p-2 cursor-pointer shadow  rounded-full fixed top-7 left-[16rem]' />
                             :
                             <IoIosArrowDropleft size={36}
                                 onClick={() => setMinNavbar(!minNavbar)}

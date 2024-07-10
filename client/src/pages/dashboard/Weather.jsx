@@ -5,7 +5,7 @@ const Weather = () => {
     return (
         <div className='flex'>
             <Navbar />
-            <div className='p-8'>
+            <div className='p-8 w-full'>
                 <h1>Weather</h1>
             </div>
         </div>
