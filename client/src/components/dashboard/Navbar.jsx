@@ -89,7 +89,7 @@ const Navbar = () => {
                     navigation.map(item => (
                         <NavLink to={item.path} className={({ isActive }) =>
                             isActive ?
-                                `p-3 text-sm font-medium rounded-md space-x-4 bg-gray-100 ring-1 ring-gray-200 flex items-center`
+                                `p-3 text-sm font-medium rounded-md space-x-4 bg-stone-900 text-white ring-1 ring-gray-200 flex items-center`
                                 :
                                 `p-3 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`
 
