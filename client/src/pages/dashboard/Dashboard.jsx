@@ -15,7 +15,7 @@ const Dashboard = () => {
                     <Link to={'/'} className='text-sm'>Help & Feedback</Link>
                 </div>
                 <h1 className='font-semibold text-3xl'>Good Morning, Sujan Ban</h1>
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid md:grid-cols-3 gap-4'>
                     <div className='grid col-span-2 gap-4'>
                         <Card
                             title={'Farm Bot'}

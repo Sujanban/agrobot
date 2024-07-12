@@ -9,9 +9,9 @@ const Farmbot = () => {
         <div className='flex'>
             <Navbar />
             <div className='p-8 w-full h-screen space-y-2'>
-                <div className='p-4 flex items-center justify-between bg-stone-200 rounded-md'>
-                    <h1 className='p-4 font-medium'>Start new conversation</h1>
-                    <Link className='flex items-center space-x-2 px-8 py-4 bg-stone-900 rounded-md text-sm text-white'><LuPenSquare /><p>start</p></Link>
+                <div className='px-4 py-1 flex items-center justify-between bg-stone-200 rounded-md'>
+                    <h1 className='p-4 font-medium'>Start Chat</h1>
+                    <Link className='flex items-center space-x-2 px-8 py-4 bg-stone-900 rounded-md text-sm text-white'><LuPenSquare /><p>create</p></Link>
                 </div>
                 <h1 className='font-semibold text-3xl'>Farmbot</h1>
                 <p className='text-sm text-stone-500'>Ask the chatbot with your queries related to farming and agriculture.</p>
