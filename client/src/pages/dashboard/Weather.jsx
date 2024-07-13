@@ -4,6 +4,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { CiTempHigh, CiDroplet } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
 import { WiHumidity } from "react-icons/wi";
+import '../../App.css'
 
 
 const Weather = () => {
@@ -12,9 +13,7 @@ const Weather = () => {
             <Navbar />
             <div className='p-8 w-full space-y-4'>
                 <h1 className='font-medium text-4xl'>Weather</h1>
-
-
-
+                
                 <div className='grid grid-cols-3 gap-4'>
                     <div className=' space-y-4'>
                         <div className='flex items-center gap-2 rounded-full shadow border'>
@@ -22,7 +21,7 @@ const Weather = () => {
                             <input className='p-3 w-full text-sm rounded-full outline-none' type="search" placeholder='Kathmandu, Nepal' />
                         </div>
 
-                        <div className='p-4 rounded-xl space-y-4 bg-gradient-to-bl from-stone-600 to-red-500'>
+                        <div className='today-weather p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
                                 <h1 className='text-5xl font-semibold'>28°C</h1>
                                 <h2 className='text-medium'>Rainy Day</h2>
