@@ -45,8 +45,8 @@ const Navbar = () => {
         <nav className='flex items-center gap-6'>
           {
             menuItems.map(item => (
-              <Link className='flex items-center space-x-1' key={item.id} to={item.path}>
-                <span>{item.icon}</span>
+              <Link className='flex items-center space-x-1 text-sm' key={item.id} to={item.path}>
+                {/* <span>{item.icon}</span> */}
                 <span>{item.name}</span>
               </Link>
             ))
@@ -54,7 +54,7 @@ const Navbar = () => {
         </nav>
 
         <div className='flex items-center space-x-2'>
-          <Link to={"/register"} className='rounded-full border text-white bg-green px-4 py-2'>Get Started</Link>
+          <Link to={"/register"} className='text-sm rounded-full border text-white bg-stone-900 px-4 py-2'>Get Started</Link>
         </div>
       </div>
 
