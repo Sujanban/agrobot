@@ -6,6 +6,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { WiHumidity } from "react-icons/wi";
 import { LuClock3 } from "react-icons/lu";
 import { IoRainy } from "react-icons/io5";
+import { CiCalendar } from "react-icons/ci";
 
 
 const Weather = () => {
@@ -72,55 +73,125 @@ const Weather = () => {
                         </div>
                     </div>
                     <div className='col-span-2 gap-4 bg-slate-200 w-full'>
-                        <div className='p-4 rounded-xl bg-black'>
-                            <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
-                                <LuClock3 /> <p>HOURLY FORECAST</p>
+                        <div className='grid gap-4'>
+                            <div className='p-4 rounded-xl bg-black'>
+                                <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
+                                    <LuClock3 /> <p>HOURLY FORECAST</p>
+                                </div>
+                                <div className='py-4 max-w-3xl overflow-auto flex items-center gap-4 text-white'>
+                                    <div className='px-5 py-3 bg-slate-900 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Now</h2>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                </div>
                             </div>
-                            <div className='py-4 max-w-3xl overflow-auto flex items-center gap-4 text-white'>
-                                <div className='px-5 py-3 bg-slate-900 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
+
+                            <div className='p-4 rounded-xl bg-black'>
+                                <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
+                                    <CiCalendar /> <p>10-DAY FORECAST</p>
                                 </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
-                                </div>
-                                <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                    <h2 className='text-sm'>Now</h2>
-                                    <h1 className='text-xl font-medium'>28°C</h1>
-                                    <IoRainy className='text-2xl mx-auto'/>
+                                <div className='py-4 max-w-3xl overflow-auto flex items-center gap-4 text-white'>
+                                    <div className='px-5 py-3 bg-slate-900 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Today</h2>
+                                        <p className='text-xs text-slate-500'>16/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
+                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
+                                        <h2 className='text-sm'>Thu</h2>
+                                        <p className='text-xs text-slate-500'>17/09</p>
+                                        <h1 className='text-xl font-medium'>28°C</h1>
+                                        <IoRainy className='text-2xl mx-auto' />
+                                    </div>
                                 </div>
                             </div>
                         </div>
