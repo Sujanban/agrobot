@@ -16,16 +16,16 @@ const Weather = () => {
         <div className='flex'>
             <Navbar />
             <div className='p-8 w-full space-y-4'>
-                <h1 className='font-medium text-4xl'>Weather</h1>
+                <h1 className='font-medium text-2xl'>Weather</h1>
 
                 <div className='grid grid-cols-3 gap-4'>
-                    <div className=' space-y-4 bg-slate-200'>
-                        <div className='flex items-center gap-2 rounded-full shadow border'>
+                    <div className=' space-y-4 bg-black rounded-xl'>
+                        <div className='m-1 flex items-center gap-2 rounded-full bg-white'>
                             <IoLocationOutline className='text-5xl pl-4 py-2' />
                             <input className='p-3 w-full text-sm rounded-full outline-none' type="search" placeholder='Kathmandu, Nepal' />
                         </div>
 
-                        <div className='today-weather p-4 rounded-xl space-y-4'>
+                        <div className='today-weather bg-black text-white p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
                                 <h1 className='text-5xl font-semibold'>28°C</h1>
                                 <h2 className='text-medium'>Rainy Day</h2>
@@ -74,13 +74,13 @@ const Weather = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='col-span-2 gap-4 bg-slate-200 w-full'>
+                    <div className='col-span-2 gap-4 w-full'>
                         <div className='grid gap-4'>
                             <div className='p-4 rounded-xl bg-black'>
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
                                     <LuClock3 /> <p>HOURLY FORECAST</p>
                                 </div>
-                                <div className='py-4 max-w-3xl overflow-auto flex items-center gap-4 text-white'>
+                                <div className='py-4 max-w-[46rem] overflow-auto flex items-center gap-4 text-white'>
                                     <div className='px-5 py-3 bg-slate-900 grid gap-2 text-center rounded-md'>
                                         <h2 className='text-sm'>Now</h2>
                                         <h1 className='text-xl font-medium'>28°C</h1>
@@ -133,7 +133,7 @@ const Weather = () => {
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
                                     <CiCalendar /> <p>10-DAY FORECAST</p>
                                 </div>
-                                <div className='py-4 max-w-3xl overflow-auto flex items-center gap-4 text-white'>
+                                <div className='py-4 max-w-[46rem] overflow-auto flex items-center gap-4 text-white'>
                                     <div className='px-5 py-3 bg-slate-900 grid gap-2 text-center rounded-md'>
                                         <h2 className='text-sm'>Today</h2>
                                         <p className='text-xs text-slate-500'>16/09</p>

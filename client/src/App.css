@@ -11,3 +11,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+div::-webkit-scrollbar {
+  background-color: gray;
+  border-radius: 20px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(52, 52, 52);
+  border-radius: 20px;
+}
