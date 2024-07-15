@@ -9,8 +9,8 @@ const Farmbot = () => {
     return (
         <div className='flex'>
             <Navbar />
-            <div className='p-8 w-full h-screen space-y-2'>
-            <div className='flex items-center justify-end space-x-2 text-blue-800'>
+            <div className='p-8 w-full h-screen space-y-4'>
+                <div className='flex items-center justify-end space-x-2 text-blue-800'>
                     <AiTwotoneQuestionCircle color='blue' />
                     <Link to={'/'} className='text-sm'>Help & Feedback</Link>
                 </div>
@@ -59,11 +59,11 @@ const Farmbot = () => {
                         <div className='space-y-2'>
                             <h1 className='font-semibold text-right'>Agrobot</h1>
                             <p className='p-2 bg-stone-200 text-black rounded-l-xl rounded-b-xl text-sm'>
-                                Farming is the practice of cultivating land, growing crops, and raising animals for food, fiber, medicinal plants, and other products used to sustain and enhance human life. 
+                                Farming is the practice of cultivating land, growing crops, and raising animals for food, fiber, medicinal plants, and other products used to sustain and enhance human life.
 
                                 Crop Production: This includes planting, growing, and harvesting crops such as grains, fruits, vegetables, and legumes. Farmers use techniques like plowing, sowing, irrigating, and applying fertilizers and pesticides to ensure healthy and abundant crops.
 
-                                
+
                             </p>
                         </div>
                         <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-emerald-700'>A</h1>
