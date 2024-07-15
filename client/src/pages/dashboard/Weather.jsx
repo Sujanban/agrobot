@@ -9,6 +9,8 @@ import { IoRainy } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 import { MdOutlineWindPower } from "react-icons/md";
 import compass from "../../assets/compass.png"
+import { AiTwotoneQuestionCircle } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 
 const Weather = () => {
@@ -16,7 +18,11 @@ const Weather = () => {
         <div className='flex'>
             <Navbar />
             <div className='p-8 w-full space-y-4'>
-                <h1 className='font-medium text-2xl'>Weather</h1>
+                <div className='flex items-center justify-end space-x-2 text-blue-800'>
+                    <AiTwotoneQuestionCircle color='blue' />
+                    <Link to={'/'} className='text-sm'>Help & Feedback</Link>
+                </div>
+                <h1 className='font-semibold text-2xl'>Weather</h1>
 
                 <div className='grid grid-cols-3 gap-4'>
                     <div className=' space-y-4 bg-black rounded-xl'>

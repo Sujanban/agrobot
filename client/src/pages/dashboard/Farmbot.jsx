@@ -3,17 +3,22 @@ import React from 'react'
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { LuPenSquare } from "react-icons/lu";
 import { Link } from 'react-router-dom';
+import { AiTwotoneQuestionCircle } from "react-icons/ai";
 
 const Farmbot = () => {
     return (
         <div className='flex'>
             <Navbar />
             <div className='p-8 w-full h-screen space-y-2'>
-                <div className='px-4 py-1 flex items-center justify-between bg-stone-200 rounded-md'>
+            <div className='flex items-center justify-end space-x-2 text-blue-800'>
+                    <AiTwotoneQuestionCircle color='blue' />
+                    <Link to={'/'} className='text-sm'>Help & Feedback</Link>
+                </div>
+                {/* <div className='px-4 py-1 flex items-center justify-between bg-stone-200 rounded-md'>
                     <h1 className='p-4 font-medium'>Start Chat</h1>
                     <Link className='flex items-center space-x-2 px-8 py-4 bg-stone-900 rounded-md text-sm text-white'><LuPenSquare /><p>create</p></Link>
-                </div>
-                <h1 className='font-semibold text-3xl'>Farmbot</h1>
+                </div> */}
+                <h1 className='font-semibold text-2xl'>Farmbot</h1>
                 <p className='text-sm text-stone-500'>Ask the chatbot with your queries related to farming and agriculture.</p>
                 <div className='p-4 overflow-auto h-2/3 space-y-4 bordder shaddow rounded-xl'>
 
