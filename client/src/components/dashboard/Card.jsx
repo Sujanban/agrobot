@@ -8,8 +8,10 @@ const Card = ({title, descriprtion, path, anchor}) => {
             <h1 className='text-xl font-semibold'>{title}</h1>
             <div className='flex items-center gap-8'>
                 <p className='text-gray-500 text-sm'>{descriprtion}</p>
-                <Link className='flex items-center space-x-2 px-8 py-4 bg-stone-900 rounded-xl text-sm text-white'
-                    to={path}>{anchor}<LuChevronRight /></Link>
+                <Link className='flex items-center space-x-2 px-8 py-4 border bg-stone-900 rounded-xl text-sm text-white'
+                    to={path}>{anchor}
+                    {/* <LuChevronRight /> */}
+                    </Link>
             </div>
         </div>
     )
