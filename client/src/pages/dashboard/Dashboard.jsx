@@ -10,7 +10,7 @@ const Dashboard = () => {
         <div className='flex bg-slate-50'>
             <Navbar />
             <div className='p-8 w-full space-y-4'>
-                <div className='flex items-center justify-end space-x-2 text-blue-800'>
+                <div className='flex items-center justify-end space-x-2 text-custom-blue'>
                     <AiTwotoneQuestionCircle color='blue' />
                     <Link to={'/'} className='text-sm'>Help & Feedback</Link>
                 </div>

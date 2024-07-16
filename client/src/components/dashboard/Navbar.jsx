@@ -8,6 +8,7 @@ import { FaDisease } from "react-icons/fa";
 import { LuUsers2 } from "react-icons/lu";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoIosArrowDropleft } from "react-icons/io";
+import { GoHome } from "react-icons/go";
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
         {
             name: 'Home',
             path: '/dashboard',
-            icon: <IoHomeOutline />
+            icon: <GoHome />
         },
         {
             name: 'Weather',
@@ -84,12 +85,12 @@ const Navbar = () => {
                     </div>
                 }
             </div>
-            <div className='py-4 grid gap-4'>
+            <div className='py-4 grid gap-1'>
                 {
                     navigation.map(item => (
                         <NavLink to={item.path} className={({ isActive }) =>
                             isActive ?
-                                `p-3 text-sm font-medium rounded-md space-x-4 bg-stone-900 text-white ring-1 ring-gray-200 flex items-center`
+                                `p-3 text-sm font-medium rounded-md space-x-4 bg-gray-100 shadow ring-1 ring-gray-200 flex items-center`
                                 :
                                 `p-3 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`
 
