@@ -20,7 +20,7 @@ const Farmbot = () => {
                 </div> */}
                 <h1 className='font-semibold text-2xl'>Farmbot</h1>
                 <p className='text-sm text-stone-500'>Ask the chatbot with your queries related to farming and agriculture.</p>
-                <div className='p-4 overflow-auto h-2/3 space-y-4 bordder shaddow rounded-xl'>
+                <div className='p-4  overflow-auto h-2/3 space-y-4 bordder shaddow rounded-xl'>
 
                     <div className='py-2 flex space-x-4'>
                         <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-stone-800'>S</h1>
