@@ -23,7 +23,6 @@ const Login = () => {
             <div className='flex justify-center flex-col'>
               <h1 className='text-2xl mx-auto font-bold flex border-b-2 border-stone-800'>Login to your account</h1>
               <p className='py-4 text-sm text-center text-gray-500'>Login with email and password used during signup.</p>
-
             </div>
             <form className='grid gap-4'>
               <div>
