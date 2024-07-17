@@ -85,7 +85,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className='grid gap-2'>
-                <div className='my-2 rounded-md shadow border flex items-center gap-2 text-sm '>
+                <div className='my-2 rounded-md shadow border flex items-center text-sm '>
                     <CiSearch size={25} className='ml-2 text-gray-500' />
                     <input className='p-2 w-full rounded-md outline-none' type="search" placeholder="Search..." />
                 </div>
