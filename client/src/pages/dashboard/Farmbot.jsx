@@ -1,7 +1,6 @@
 import Navbar from '@/components/dashboard/Navbar'
 import React from 'react'
 import { IoPaperPlaneOutline } from "react-icons/io5";
-import { LuPenSquare } from "react-icons/lu";
 import { Link } from 'react-router-dom';
 import { AiTwotoneQuestionCircle } from "react-icons/ai";
 
@@ -14,10 +13,6 @@ const Farmbot = () => {
                     <AiTwotoneQuestionCircle color='blue' />
                     <Link to={'/'} className='text-sm'>Help & Feedback</Link>
                 </div>
-                {/* <div className='px-4 py-1 flex items-center justify-between bg-gray-200 rounded-md'>
-                    <h1 className='p-4 font-medium'>Start Chat</h1>
-                    <Link className='flex items-center space-x-2 px-8 py-4 bg-stone-900 rounded-md text-sm text-white'><LuPenSquare /><p>create</p></Link>
-                </div> */}
                 <h1 className='font-semibold text-2xl'>Farmbot</h1>
                 <div className='p-2 shadow border max-w-xl mx-auto overflow-auto  space-y-4 bordder shaddow rounded-xl'>
                     <p className='p-4 bg-slate-200 rounded-md text-sm underline'>Ask the chatbot with your queries related to farming and agriculture.</p>
