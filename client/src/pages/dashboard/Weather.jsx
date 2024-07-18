@@ -214,7 +214,7 @@ const Weather = () => {
                                         <p className='font-medium'>Moderate</p>
                                     </div>
                                     <div className='relative w-full h-2 bg-red-500 rounded-full '>
-                                        <div className='absolute h-3 w-2 rounded bg-orange-600 border border-wfffhite  -top-0.5 left-[50%]'></div>
+                                        <div className='absolute h-3 w-2 bg-orange-500  -top-0.5 left-[50%]'></div>
                                     </div>
                                     <p className='text-xs text-stone-500'>use the sun protection until 16:00</p>
 
