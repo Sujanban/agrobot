@@ -15,16 +15,12 @@ import { Link } from 'react-router-dom';
 
 const Weather = () => {
     return (
-        <div className='flex'>
+        <div className='flex max-w-7xl mx-auto'>
             <Navbar />
             <div className='h-screen overflow-auto p-8 w-full space-y-4'>
-                <div className='flex items-center justify-end space-x-2 text-custom-blue'>
-                    <AiTwotoneQuestionCircle color='blue' />
-                    <Link to={'/'} className='text-sm'>Help & Feedback</Link>
-                </div>
                 <h1 className='font-semibold text-2xl'>Weather</h1>
 
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='flex grsssid grid-cols-3 gap-4'>
                     <div className=' space-y-4 bg-blasck rounded-xl border shadow'>
                         <div className='m-1 flex items-center gap-2 rounded-full bg-white'>
                             <IoLocationOutline className='text-5xl pl-4 py-2' />
@@ -42,7 +38,7 @@ const Weather = () => {
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <CiTempHigh className='' />
-                                        <p className=''>FEELS LIKE</p>
+                                        <p className='text-sm'>FEELS LIKE</p>
                                     </div>
                                     <h1 className='text-3xl'>30°C</h1>
                                     <p className='text-xs text-stone-500'>Humidity is making it feel warmer</p>
@@ -51,7 +47,7 @@ const Weather = () => {
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <CiDroplet className='' />
-                                        <p className=''>PRECIPITATION</p>
+                                        <p className='text-sm'>PRECIPITATION</p>
                                     </div>
                                     <div>
                                         <h1 className='text-3xl'>2.3"</h1>
@@ -63,7 +59,7 @@ const Weather = () => {
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <IoEyeOutline className='' />
-                                        <p className=''>VISIBILITY</p>
+                                        <p className='text-sm'>VISIBILITY</p>
                                     </div>
                                     <h1 className='text-3xl'>6 mi</h1>
                                 </div>
@@ -71,7 +67,7 @@ const Weather = () => {
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <WiHumidity className='' />
-                                        <p className=''>HUMIDITY</p>
+                                        <p className='text-sm'>HUMIDITY</p>
                                     </div>
                                     <h1 className='text-3xl'>82%</h1>
                                     <p className='text-xs text-stone-500'>The dew point is 25°C right now</p>
@@ -86,7 +82,7 @@ const Weather = () => {
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
                                     <LuClock3 /> <p>HOURLY FORECAST</p>
                                 </div>
-                                <div className='py-4 max-w-[46rem] overflow-auto flex items-center gap-4 text-whddite'>
+                                <div className='py-4 max-w-xl overflow-auto flex items-center gap-4 text-whddite'>
                                     <div className='px-5 py-3 bg-slate-200  grid gap-2 text-center rounded-md'>
                                         <h2 className='text-sm'>Now</h2>
                                         <h1 className='text-xl font-medium'>28°C</h1>
@@ -139,7 +135,7 @@ const Weather = () => {
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
                                     <CiCalendar /> <p>10-DAY FORECAST</p>
                                 </div>
-                                <div className='py-4 max-w-[46rem] overflow-auto flex items-center gap-4 text-whddite'>
+                                <div className='py-4 max-w-xl overflow-auto flex items-center gap-4 text-whddite'>
                                     <div className='px-6 py-3 bg-slate-200 grid gap-2 text-center rounded-md'>
                                         <h2 className='text-sm'>Today</h2>
                                         <p className='text-xs text-slate-500'>16/09</p>

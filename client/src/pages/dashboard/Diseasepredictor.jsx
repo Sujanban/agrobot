@@ -10,13 +10,13 @@ import { PiMagicWandLight } from "react-icons/pi";
 
 const Diseasepredictor = () => {
     return (
-        <div className='flex h-screen'>
+        <div className='flex max-w-7xl mx-auto h-screen'>
             <Navbar />
             <div className='p-8 w-full space-y-4 h-full overflow-auto'>
-                <div className='flex items-center justify-end space-x-2 text-custom-blue'>
+                {/* <div className='flex items-center justify-end space-x-2 text-custom-blue'>
                     <AiTwotoneQuestionCircle color='blue' />
                     <Link to={'/'} className='text-sm'>Help & Feedback</Link>
-                </div>
+                </div> */}
                 <h1 className='font-semibold text-2xl'>Disease Predictor</h1>
 
                 <div className='grid grid-cols-3 gap-4'>
@@ -37,24 +37,24 @@ const Diseasepredictor = () => {
                         <div className='p-2 shadow border rounded-xl'>
                             <h1 className='p-2 text-xl font-medium'>Stats insights</h1>
                             <div className='grid gap-2'>
-                                <div className='p-4 flex bg-orange-600 text-white items-center gap-4 rounded-md shadow border'>
+                                <div className='px-4 py-2 flex bg-orange-600 text-white items-center gap-4 rounded-md shadow border'>
                                     <GoPaperclip size={30} className='p-1 rounded-full border shadow ' />
-                                    <div>
-                                        <h1>49+ different plant disease detection</h1>
+                                    <div className='space-y-1'>
+                                        <h1 className='text-sm'>49+ different plant disease detection</h1>
                                         <p className='text-gray-5000  text-xs'>We analyze almost all of the diseases that effects plants.</p>
                                     </div>
                                 </div>
-                                <div className='p-4 flex bg-emerald-600 text-white items-center gap-4 rounded-md shadow border'>
+                                <div className='px-4 py-2 flex bg-emerald-600 text-white items-center gap-4 rounded-md shadow border'>
                                     <GoPaperclip size={30} className='p-1 rounded-full border shadow ' />
-                                    <div>
-                                        <h1>98.85% Disease detection accuracy</h1>
+                                    <div className='space-y-1'>
+                                        <h1 className='text-sm'>98.85% Disease detection accuracy</h1>
                                         <p className='text-gray-5000 text-xs'>We use well tested, highly accurate dataset to train our model.</p>
                                     </div>
                                 </div>
-                                <div className='p-4 flex bg-blue-600 text-white items-center gap-4 rounded-md shadow border'>
+                                <div className='px-4 py-2 flex bg-blue-600 text-white items-center gap-4 rounded-md shadow border'>
                                     <GoPaperclip size={30} className='p-1 rounded-full border shadow ' />
-                                    <div>
-                                        <h1>200+ different plant supported</h1>
+                                    <div className='space-y-1'>
+                                        <h1 className='text-sm'>200+ different plant supported</h1>
                                         <p className='text-gray-5000 text-xs'>We have suppoer for various types of plants.</p>
                                     </div>
                                 </div>

@@ -2,18 +2,13 @@ import React from 'react'
 import { LuChevronRight } from "react-icons/lu";
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/dashboard/Navbar';
-import { AiTwotoneQuestionCircle } from "react-icons/ai";
 import Card from '../../components/dashboard/Card';
 
 const Dashboard = () => {
     return (
-        <div className='flex bg-slate-50'>
+        <div className='flex max-w-7xl mx-auto'>
             <Navbar />
             <div className='h-screen overflow-auto p-8 w-full space-y-4'>
-                <div className='flex items-center justify-end space-x-2 text-custom-blue'>
-                    <AiTwotoneQuestionCircle color='blue' />
-                    <Link to={'/'} className='text-sm'>Help & Feedback</Link>
-                </div>
                 <h1 className='font-semibold text-3xl'>Good Morning, Sujan Ban</h1>
                 <div className='grid md:grid-cols-3 gap-4'>
                     <div className='grid col-span-2 gap-4'>

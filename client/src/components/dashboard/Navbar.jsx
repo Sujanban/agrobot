@@ -43,7 +43,7 @@ const Navbar = () => {
     ]
     return (
         <div className={`
-            p-8 absolute md:relative bg-white ring-1 ring-stone-200 shadow-xl h-screen overflow-y-hidden
+            p-8 absolute md:relative bg-white border-r shadow h-screen overflow-y-hidden
             ${!minNavbar && 'w-[20rem]'}
             `}>
 
