@@ -2,8 +2,32 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import signupimg from '../assets/signup-image.png'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 
 const Register = () => {
+  const [formData, setFormData] = useState(
+    {
+      username: '',
+      email: '',
+      password: '',
+      cpassword: ''
+    }
+  );
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const res = await axios.post('/api/auth/register', formData)
+    if (res.data.error) {
+      toast.error(res.data.error);
+      return
+    }
+
+    if (res.data.message) {
+      toast.success(res.data.message);
+    }
+  }
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   return (
@@ -27,33 +51,40 @@ const Register = () => {
             </div>
             <form className='grid gap-4'>
               <div>
-                <input type="text" placeholder='Full Name'
+                <input
+                  onChange={(e) => setFormData({ ...formData, username: e.target.value })} type="text" placeholder='Username'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
               </div>
               <div>
-                <input type="text" placeholder='E-mail'
+                <input
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  type="text" placeholder='E-mail'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
               </div>
               <div className='relative'>
-                <input type="text" placeholder='Password'
+                <input
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  type="text" placeholder='Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
-                  {
-                    showPassword ? 
+                {
+                  showPassword ?
                     <FaRegEye onClick={() => setShowPassword(!showPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' /> :
-                    <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' /> 
-                  }
+                    <FaRegEyeSlash onClick={() => setShowPassword(!showPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' />
+                }
               </div>
               <div className='relative'>
-                <input type="text" placeholder='Confirm Password'
+                <input
+                  onClick={(e) => setFormData({ ...formData, cpassword: e.target.value })}
+                  type="text" placeholder='Confirm Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
-                  {
-                    showConfirmPassword ? 
+                {
+                  showConfirmPassword ?
                     <FaRegEye onClick={() => setShowConfirmPassword(!showConfirmPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' /> :
-                    <FaRegEyeSlash onClick={() => setShowConfirmPassword(!showConfirmPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' /> 
-                  }
+                    <FaRegEyeSlash onClick={() => setShowConfirmPassword(!showConfirmPassword)} className='absolute top-[50%] -translate-y-[50%] right-3 cursor-pointer text-stone-900' />
+                }
               </div>
               <p className='text-xs text-gray-500'>By confirming your email, you agree to our Terms of Service and that you have read and understood our Privacy Policy.</p>
-              <input type="submit" className='px-4 py-3 rounded-md bg-stone-900 hover:bg-stone-800 transition-all ease-in-out duration-200 cursor-pointer text-white' value={"Create Account"} />
+              <input onClick={handleRegister} type="submit" className='px-4 py-3 rounded-md bg-stone-900 hover:bg-stone-800 transition-all ease-in-out duration-200 cursor-pointer text-white' value={"Create Account"} />
             </form>
           </div>
           <div className='absolute top-8 right-8 text-sm flex items-center space-x-4'>

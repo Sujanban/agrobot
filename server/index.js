@@ -20,12 +20,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-router.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
@@ -35,6 +30,6 @@ router.use(
 app.use("/api/auth", authRoutes);
 
 // chat routes
-app.use('/api/chat', chatRoutes);
+app.use("/api/chat", chatRoutes);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

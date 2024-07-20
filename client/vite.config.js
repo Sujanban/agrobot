@@ -19,4 +19,15 @@ export default defineConfig({
      "@": path.resolve(__dirname, "./src"),
    },
  },
-})
+//  server: {
+//   proxy: {
+//    "/api": {
+//         target: "http://localhost:3000", // Ensure this server is running
+//         changeOrigin: true,
+//         secure: false, // `secure: false` if you're using an HTTP server
+//         rewrite: (path) => path.replace(/^\/api/, ""), // Rewrite the path for the proxy
+//       },
+//   },
+//  }
+}
+)
