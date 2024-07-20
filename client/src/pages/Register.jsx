@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import signupimg from '../assets/signup-image.png'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const Register = () => {
