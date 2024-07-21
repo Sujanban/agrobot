@@ -4,8 +4,11 @@ import signupimg from '../assets/signup-image.png'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser } from '@/app/feature/userSlice';
 
 const Register = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState(
     {
       username: '',
@@ -17,15 +20,17 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const res = await axios.post('/api/auth/register', formData)
-    if (res.data.error) {
-      toast.error(res.data.error);
-      return
-    }
 
-    if (res.data.message) {
-      toast.success(res.data.message);
-    }
+    dispatch(addUser(formData));
+    // const res = await axios.post('/api/auth/register', formData)
+    // if (res.data.error) {
+    //   toast.error(res.data.error);
+    //   return
+    // }
+
+    // if (res.data.message) {
+    //   toast.success(res.data.message);
+    // }
   }
 
   const [showPassword, setShowPassword] = useState(false);
@@ -74,7 +79,7 @@ const Register = () => {
               </div>
               <div className='relative'>
                 <input
-                  onClick={(e) => setFormData({ ...formData, cpassword: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, cpassword: e.target.value })}
                   type="text" placeholder='Confirm Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
                 {
