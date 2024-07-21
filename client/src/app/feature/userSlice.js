@@ -1,18 +1,22 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
+import { Navigate } from "react-router-dom";
 
 // register user
-export const addUser = createAsyncThunk("user/addUser", async (user, { rejectWithValue }) => {
-  try {
-    const res = await axios.post("/api/auth/register", user);
-    if(res.data.error) return rejectWithValue(res.data.error);
-    return res.data;
-  } catch (err) {
-    return rejectWithValue(err.response.data);
-    console.log(err);
+export const addUser = createAsyncThunk(
+  "user/addUser",
+  async (user, { rejectWithValue }) => {
+    try {
+      const res = await axios.post("/api/auth/register", user);
+      if (res.data.error) return rejectWithValue(res.data.error);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err);
+    }
   }
-});
+);
 const userSlice = createSlice({
   name: "user",
   initialState: {

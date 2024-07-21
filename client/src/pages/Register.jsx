@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import signupimg from '../assets/signup-image.png'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import toast from 'react-hot-toast';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '@/app/feature/userSlice';
 
 const Register = () => {
+  const { error } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(
     {
@@ -20,17 +21,9 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    dispatch(addUser(formData));
-    // const res = await axios.post('/api/auth/register', formData)
-    // if (res.data.error) {
-    //   toast.error(res.data.error);
-    //   return
-    // }
-
-    // if (res.data.message) {
-    //   toast.success(res.data.message);
-    // }
+    dispatch(addUser(formData)).then((res) => {
+      if (res.payload.message) navigate('/login');
+    })
   }
 
   const [showPassword, setShowPassword] = useState(false);
