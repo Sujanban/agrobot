@@ -1,8 +1,5 @@
 import Navbar from '@/components/dashboard/Navbar'
 import React from 'react'
-import { AiTwotoneQuestionCircle } from "react-icons/ai";
-import { Link } from 'react-router-dom';
-import fileupload from "../../assets/file-upload.gif"
 import { GoPaperclip } from "react-icons/go";
 import { CiImageOn } from "react-icons/ci";
 import { PiMagicWandLight } from "react-icons/pi";
@@ -13,12 +10,7 @@ const Diseasepredictor = () => {
         <div className='flex max-w-7xl mx-auto h-screen'>
             <Navbar />
             <div className='p-8 w-full space-y-4 h-full overflow-auto'>
-                {/* <div className='flex items-center justify-end space-x-2 text-custom-blue'>
-                    <AiTwotoneQuestionCircle color='blue' />
-                    <Link to={'/'} className='text-sm'>Help & Feedback</Link>
-                </div> */}
                 <h1 className='font-semibold text-2xl'>Disease Predictor</h1>
-
                 <div className='grid grid-cols-3 gap-4'>
                     <div className='col-span-2 mx-auto px-4 py-8 max-w-md space-y-2 rounded-xl shadow border border-gray-100'>
                         <h1 className='font-medium text-xl text-center'>Upload an Image</h1>
