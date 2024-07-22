@@ -30,7 +30,7 @@ const Login = () => {
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
               </div>
               <div className='relative'>
-                <input type="text" placeholder='Password'
+                <input type={showPassword ? "text" : "password"} placeholder='Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
                 {
                   showPassword ?

@@ -62,7 +62,7 @@ const Register = () => {
               <div className='relative'>
                 <input
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  type="text" placeholder='Password'
+                  type={showPassword ? "text" : "password"} placeholder='Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
                 {
                   showPassword ?
@@ -73,7 +73,7 @@ const Register = () => {
               <div className='relative'>
                 <input
                   onChange={(e) => setFormData({ ...formData, cpassword: e.target.value })}
-                  type="text" placeholder='Confirm Password'
+                  type={showConfirmPassword ? "text" : "password"} placeholder='Confirm Password'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
                 {
                   showConfirmPassword ?
