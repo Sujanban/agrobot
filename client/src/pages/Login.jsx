@@ -1,10 +1,27 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import signupimg from '../assets/signup-image.png'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { loginUser } from '@/app/feature/userSlice';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(formData)).then((res) => {
+      if (res.payload.message) {
+        navigate('/dashboard');
+      }
+    });
+  };
   return (
     <div className='h-screen'>
       <div className='grid grid-cols-3 h-full'>
@@ -26,11 +43,13 @@ const Login = () => {
             </div>
             <form className='grid gap-4'>
               <div>
-                <input type="text" placeholder='E-mail'
+                <input type="email" placeholder='E-mail'
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
               </div>
               <div className='relative'>
                 <input type={showPassword ? "text" : "password"} placeholder='Password'
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
                 {
                   showPassword ?
@@ -39,7 +58,7 @@ const Login = () => {
                 }
               </div>
               <p className='text-xs text-gray-500'>By confirming your email, you agree to our Terms of Service and that you have read and understood our Privacy Policy.</p>
-              <input type="submit" className='px-4 py-3 rounded-md bg-stone-900 hover:bg-stone-800 transition-all ease-in-out duration-200 cursor-pointer text-white' value={"Login"} />
+              <input type="submit" onClick={handleLogin} className='px-4 py-3 rounded-md bg-stone-900 hover:bg-stone-800 transition-all ease-in-out duration-200 cursor-pointer text-white' value={"Login"} />
             </form>
           </div>
           <div className='absolute top-8 right-8 text-sm flex items-center space-x-4'>
