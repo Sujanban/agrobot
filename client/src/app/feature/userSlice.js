@@ -12,7 +12,7 @@ export const addUser = createAsyncThunk(
       return res.data;
     } catch (err) {
       console.log(err);
-      return rejectWithValue(err);
+      return rejectWithValue(err.message);
     }
   }
 );
@@ -27,7 +27,7 @@ export const loginUser = createAsyncThunk(
       return res.data;
     } catch (err) {
       console.log(err);
-      return rejectWithValue(err);
+      return rejectWithValue(err.message);
     }
   }
 );
