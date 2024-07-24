@@ -14,10 +14,10 @@ import axios from 'axios';
 
 const Weather = () => {
     const [city, setCity] = useState("");
-    const handleSearch = async (city) => {
-        city.preventDefault();
+    const handleSearch = async (e) => {
+        e.preventDefault();
         try {
-            const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?&units=metric&q=KATHMANDU&appid=a516a792024accb77f34519e395792f4');
+            const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=a516a792024accb77f34519e395792f4`);
             console.log(res)
         } catch (err) {
             console.log(err)
