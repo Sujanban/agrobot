@@ -1,5 +1,5 @@
 import Navbar from '@/components/dashboard/Navbar'
-import React from 'react'
+import React, { useState } from 'react'
 import { IoLocationOutline } from "react-icons/io5";
 import { CiTempHigh, CiDroplet } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
@@ -9,9 +9,20 @@ import { IoRainy } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 import { MdOutlineWindPower } from "react-icons/md";
 import compass from "../../assets/compass.png"
+import axios from 'axios';
 
 
 const Weather = () => {
+    const [city, setCity] = useState("");
+    const handleSearch = async (city) => {
+        city.preventDefault();
+        try {
+            const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?&units=metric&q=KATHMANDU&appid=a516a792024accb77f34519e395792f4');
+            console.log(res)
+        } catch (err) {
+            console.log(err)
+        }
+    }
     return (
         <div className='flex max-w-7xl mx-auto'>
             <Navbar />
@@ -19,10 +30,10 @@ const Weather = () => {
                 <h1 className='font-semibold text-2xl'>Weather</h1>
                 <div className='flex grsssid grid-cols-3 gap-4'>
                     <div className=' space-y-4 bg-blasck rounded-xl border shadow'>
-                        <div className='m-1 flex items-center gap-2 rounded-full bg-white'>
+                        <form onSubmit={handleSearch} className='m-1 shadow border flex items-center gap-2 rounded-full bg-white'>
                             <IoLocationOutline className='text-5xl pl-4 py-2' />
-                            <input className='p-3 w-full text-sm rounded-full outline-none' type="search" placeholder='Kathmandu, Nepal' />
-                        </div>
+                            <input onChange={(e) => setCity(e.target.value)} className='p-3 w-full text-sm rounded-full outline-none' type="search" placeholder='Kathmandu, Nepal' />
+                        </form>
                         <div className='today-weather bg-blsack text-whiste p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
                                 <h1 className='text-5xl font-semibold'>28°C</h1>
