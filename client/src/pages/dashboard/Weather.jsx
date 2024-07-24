@@ -1,5 +1,5 @@
 import Navbar from '@/components/dashboard/Navbar'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoLocationOutline } from "react-icons/io5";
 import { CiTempHigh, CiDroplet } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
@@ -13,16 +13,25 @@ import axios from 'axios';
 
 
 const Weather = () => {
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState("kathmandu");
+    const [weatherData, setWeatherData] = useState({});
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=a516a792024accb77f34519e395792f4`);
-            console.log(res)
+            // const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=a516a792024accb77f34519e395792f4`);
+            // console.log(res)
+            const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=6e93b3d15872f914c6929fed9ea71e9a`);
+            const data = await response.json();
+            setWeatherData(data);
+            console.log(data);
         } catch (err) {
             console.log(err)
         }
     }
+    // useEffect(() => {
+    //     handleSearch();
+    // }, [])
+    
     return (
         <div className='flex max-w-7xl mx-auto'>
             <Navbar />
@@ -36,7 +45,7 @@ const Weather = () => {
                         </form>
                         <div className='today-weather bg-blsack text-whiste p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
-                                <h1 className='text-5xl font-semibold'>28°C</h1>
+                                <h1 className='text-5xl font-semibold'>{weatherData?.main?.temp}28°C</h1>
                                 <h2 className='text-medium'>Rainy Day</h2>
                                 <p className='text-sm'>Today, expect a rainy day with temperature reaching the maximum of 28°C. Make sure to grab your umbrella and raincoat before heading out.</p>
                             </div>
