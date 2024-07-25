@@ -106,54 +106,24 @@ const Weather = () => {
                         <div className='grid gap-4'>
                             <div className='p-4 rounded-xl bg-bddlack border shadow'>
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
-                                    <LuClock3 /> <p>HOURLY FORECAST</p>
+                                    <LuClock3 /> <p>3 HOURLY FORECAST</p>
                                 </div>
-                                <div className='py-4 max-w-xl overflow-auto flex items-center gap-4 text-whddite'>
-                                    <div className='px-5 py-3 bg-slate-200  grid gap-2 text-center rounded-md'>
+                                <div className='py-4 max-w-xl overflow-auto flex items-center gap-2 text-whddite'>
+                                    {/* <div className='px-5 py-3 bg-slate-200  grid gap-2 text-center rounded-md'>
                                         <h2 className='text-sm'>Now</h2>
                                         <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
-                                    <div className='px-5 py-3 bg-slate-900000 grid gap-2 text-center rounded-md'>
-                                        <h2 className='text-sm'>Now</h2>
-                                        <h1 className='text-xl font-medium'>28°C</h1>
-                                        <IoRainy className='text-2xl mx-auto' />
-                                    </div>
+                                        <IoRainy className='text-2xl mx-auto'/>
+                                    </div> */}
+                                    {
+                                        weeklyWeather?.list?.map((item, index) => (
+                                            <div className=' px-5 py-3 grid gap-2 text-center rounded-md' key={index}>
+                                                <h2 className='text-sm'>{item?.dt_txt?.slice(11, 16)}</h2>
+                                                <h1 className='text-xl font-medium'>{Math.floor(item?.main?.temp)}°C</h1>
+                                                <img src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
+                                            <p className='text-[10px]'>{item?.weather[0]?.description}</p>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
                             </div>
                             <div className='p-4 rounded-xl bg-blacddk border shadow'>
