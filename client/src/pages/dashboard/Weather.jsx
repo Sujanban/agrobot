@@ -14,23 +14,27 @@ import axios from 'axios';
 
 const Weather = () => {
     const [city, setCity] = useState("kathmandu");
-    const [weatherData, setWeatherData] = useState({});
+    const [currentWeather, setCurrentWeather] = useState({});
+    const [weeklyWeather, setWeeklyWeather] = useState({});
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-            // const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=a516a792024accb77f34519e395792f4`);
-            // console.log(res)
             const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data = await response.json();
-            setWeatherData(data);
+            setCurrentWeather(data);
             console.log(data);
+
+            // fetching api with lat and long
+            const response2 = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
+            const data2 = await response2.json();
+            setWeeklyWeather(data2);
+            // console.log(data2);
+
+
         } catch (err) {
             console.log(err)
         }
     }
-    // useEffect(() => {
-    //     handleSearch();
-    // }, [])
     
     return (
         <div className='flex max-w-7xl mx-auto'>
@@ -45,8 +49,8 @@ const Weather = () => {
                         </form>
                         <div className='today-weather bg-blsack text-whiste p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
-                                <h1 className='text-5xl font-semibold'>{weatherData?.main?.temp}28°C</h1>
-                                <h2 className='text-medium'>Rainy Day</h2>
+                                <h1 className='text-5xl font-semibold'>{currentWeather?.main?.temp}28°C</h1>
+                                <h2 className='text-medium'>{currentWeather?.weather[0]?.description}</h2>
                                 <p className='text-sm'>Today, expect a rainy day with temperature reaching the maximum of 28°C. Make sure to grab your umbrella and raincoat before heading out.</p>
                             </div>
                             <div className='grid grid-cols-2 gap-4'>
@@ -56,7 +60,7 @@ const Weather = () => {
                                         <CiTempHigh className='' />
                                         <p className='text-sm'>FEELS LIKE</p>
                                     </div>
-                                    <h1 className='text-3xl'>30°C</h1>
+                                    <h1 className='text-3xl'>{currentWeather?.main?.feels_like}</h1>
                                     <p className='text-xs text-stone-500'>Humidity is making it feel warmer</p>
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
@@ -65,7 +69,7 @@ const Weather = () => {
                                         <p className='text-sm'>PRECIPITATION</p>
                                     </div>
                                     <div>
-                                        <h1 className='text-3xl'>2.3"</h1>
+                                        <h1 className='text-3xl'>{currentWeather?.main?.humidity}"</h1>
                                         <p className='font-medium'>in last 24h</p>
                                     </div>
                                     <p className='text-xs text-stone-500'>Humidity is making it feel warmer</p>
@@ -75,14 +79,14 @@ const Weather = () => {
                                         <IoEyeOutline className='' />
                                         <p className='text-sm'>VISIBILITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>6 mi</h1>
+                                    <h1 className='text-3xl'>{currentWeather?.visibility} mi</h1>
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <WiHumidity className='' />
                                         <p className='text-sm'>HUMIDITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>82%</h1>
+                                    <h1 className='text-3xl'>{currentWeather?.main?.humidity}%</h1>
                                     <p className='text-xs text-stone-500'>The dew point is 25°C right now</p>
                                 </div>
                             </div>
