@@ -10,14 +10,14 @@ import { CiCalendar } from "react-icons/ci";
 import { MdOutlineWindPower } from "react-icons/md";
 import compass from "../../assets/compass.png"
 import axios from 'axios';
+import { FaWind } from "react-icons/fa";
 
 
 const Weather = () => {
     const [city, setCity] = useState("kathmandu");
     const [currentWeather, setCurrentWeather] = useState({});
     const [weeklyWeather, setWeeklyWeather] = useState({});
-    const handleSearch = async (e) => {
-        e.preventDefault();
+    const fetchWeather = async () => {
         try {
             const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data = await response.json();
@@ -35,23 +35,33 @@ const Weather = () => {
             console.log(err)
         }
     }
-    
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        fetchWeather();
+
+    }
+
+    useEffect(() => {
+        fetchWeather();
+    }, [])
+
+
     return (
         <div className='flex max-w-7xl mx-auto'>
             <Navbar />
             <div className='h-screen overflow-auto p-8 w-full space-y-4'>
                 <h1 className='font-semibold text-2xl'>Weather</h1>
-                <div className='flex grsssid grid-cols-3 gap-4'>
-                    <div className=' space-y-4 bg-blasck rounded-xl border shadow'>
+                <div className='flessx grid grid-cols-3 gap-4'>
+                    <div className='flex-grow space-y-4 bg-blasck rounded-xl border shadow'>
                         <form onSubmit={handleSearch} className='m-1 shadow border flex items-center gap-2 rounded-full bg-white'>
                             <IoLocationOutline className='text-5xl pl-4 py-2' />
                             <input onChange={(e) => setCity(e.target.value)} className='p-3 w-full text-sm rounded-full outline-none' type="search" placeholder='Kathmandu, Nepal' />
                         </form>
                         <div className='today-weather bg-blsack text-whiste p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
-                                <h1 className='text-5xl font-semibold'>{currentWeather?.main?.temp}28°C</h1>
-                                <h2 className='text-medium'>{currentWeather?.weather[0]?.description}</h2>
-                                <p className='text-sm'>Today, expect a rainy day with temperature reaching the maximum of 28°C. Make sure to grab your umbrella and raincoat before heading out.</p>
+                                <h1 className='text-5xl font-semibold'>{currentWeather?.main?.temp}°C</h1>
+                                {/* <h2 className='text-medium'>{currentWeather?.weather[0]?.description}</h2> */}
+                                {/* <p className='text-sm'>Today, expect a rainy day with temperature reaching the maximum of 28°C. Make sure to grab your umbrella and raincoat before heading out.</p> */}
                             </div>
                             <div className='grid grid-cols-2 gap-4'>
 
@@ -61,33 +71,34 @@ const Weather = () => {
                                         <p className='text-sm'>FEELS LIKE</p>
                                     </div>
                                     <h1 className='text-3xl'>{currentWeather?.main?.feels_like}</h1>
-                                    <p className='text-xs text-stone-500'>Humidity is making it feel warmer</p>
+                                    <p className='text-xs text-stone-500'>°C</p>
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
-                                        <CiDroplet className='' />
-                                        <p className='text-sm'>PRECIPITATION</p>
+                                        <FaWind className='' />
+                                        <p className='text-sm'>WIND</p>
                                     </div>
                                     <div>
-                                        <h1 className='text-3xl'>{currentWeather?.main?.humidity}"</h1>
-                                        <p className='font-medium'>in last 24h</p>
+                                        <h1 className='text-3xl'>{currentWeather?.wind?.speed}</h1>
                                     </div>
-                                    <p className='text-xs text-stone-500'>Humidity is making it feel warmer</p>
+                                    <p className='text-xs text-stone-500'>km/h</p>
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <IoEyeOutline className='' />
                                         <p className='text-sm'>VISIBILITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>{currentWeather?.visibility} mi</h1>
+                                    <h1 className='text-3xl'>{currentWeather?.visibility} </h1>
+                                    <p className='text-xs text-stone-500'>meter</p>
+
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
                                     <div className='font-bold flex items-center gap-1'>
                                         <WiHumidity className='' />
                                         <p className='text-sm'>HUMIDITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>{currentWeather?.main?.humidity}%</h1>
-                                    <p className='text-xs text-stone-500'>The dew point is 25°C right now</p>
+                                    <h1 className='text-3xl'>{currentWeather?.main?.humidity}</h1>
+                                    <p className='text-xs text-stone-500'>%</p>
                                 </div>
                             </div>
                         </div>
