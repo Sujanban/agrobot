@@ -22,13 +22,12 @@ const Weather = () => {
             const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data = await response.json();
             setCurrentWeather(data);
-            console.log(data);
 
             // fetching api with lat and long
             const response2 = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data2 = await response2.json();
             setWeeklyWeather(data2);
-            // console.log(data2);
+            console.log(data2);
 
 
         } catch (err) {
