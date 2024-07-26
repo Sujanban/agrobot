@@ -1,41 +1,28 @@
 import Navbar from '@/components/dashboard/Navbar'
 import React, { useState, useEffect } from 'react'
 import { IoLocationOutline } from "react-icons/io5";
-import { CiTempHigh, CiDroplet } from "react-icons/ci";
+import { CiTempHigh } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
 import { WiHumidity } from "react-icons/wi";
 import { LuClock3 } from "react-icons/lu";
-import { IoRainy } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 import { MdOutlineWindPower } from "react-icons/md";
 import compass from "../../assets/compass.png"
-import axios from 'axios';
 import { FaWind } from "react-icons/fa";
 
 
 const Weather = () => {
     const [city, setCity] = useState("kathmandu");
-    const [currentWeather, setCurrentWeather] = useState({});
-    const [weeklyWeather, setWeeklyWeather] = useState({});
+    const [Weather, setWeather] = useState({});
     const fetchWeather = async () => {
         try {
             const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data = await response.json();
-            setCurrentWeather(data);
-
-            // fetching api with lat and long
-            const response2 = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
-            const data2 = await response2.json();
-            // setWeeklyWeather(data2);
-            // console.log(data2);
-
 
             const response3 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data3 = await response3.json();
-            setWeeklyWeather(data3);
+            setWeather(data3);
             console.log(data3);
-
-
         } catch (err) {
             console.log(err)
         }
@@ -64,9 +51,7 @@ const Weather = () => {
                         </form>
                         <div className='today-weather bg-blsack text-whiste p-4 rounded-xl space-y-4'>
                             <div className='py-8 text-center space-y-2'>
-                                <h1 className='text-5xl font-semibold'>{currentWeather?.main?.temp}°C</h1>
-                                {/* <h2 className='text-medium'>{currentWeather?.weather[0]?.description}</h2> */}
-                                {/* <p className='text-sm'>Today, expect a rainy day with temperature reaching the maximum of 28°C. Make sure to grab your umbrella and raincoat before heading out.</p> */}
+                                <h1 className='text-5xl font-semibold'>{Weather?.current?.temp}°C</h1>
                             </div>
                             <div className='grid grid-cols-2 gap-4'>
 
@@ -75,7 +60,7 @@ const Weather = () => {
                                         <CiTempHigh className='' />
                                         <p className='text-sm'>FEELS LIKE</p>
                                     </div>
-                                    <h1 className='text-3xl'>{currentWeather?.main?.feels_like}</h1>
+                                    <h1 className='text-3xl'>{Weather?.current?.feels_like}</h1>
                                     <p className='text-xs text-stone-500'>°C</p>
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
@@ -84,7 +69,7 @@ const Weather = () => {
                                         <p className='text-sm'>WIND</p>
                                     </div>
                                     <div>
-                                        <h1 className='text-3xl'>{currentWeather?.wind?.speed}</h1>
+                                        <h1 className='text-3xl'>{Weather?.current?.wind_speed}</h1>
                                     </div>
                                     <p className='text-xs text-stone-500'>km/h</p>
                                 </div>
@@ -93,7 +78,7 @@ const Weather = () => {
                                         <IoEyeOutline className='' />
                                         <p className='text-sm'>VISIBILITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>{currentWeather?.visibility} </h1>
+                                    <h1 className='text-3xl'>{Weather?.current?.visibility} </h1>
                                     <p className='text-xs text-stone-500'>meter</p>
 
                                 </div>
@@ -102,7 +87,7 @@ const Weather = () => {
                                         <WiHumidity className='' />
                                         <p className='text-sm'>HUMIDITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>{currentWeather?.main?.humidity}</h1>
+                                    <h1 className='text-3xl'>{Weather?.current?.humidity}</h1>
                                     <p className='text-xs text-stone-500'>%</p>
                                 </div>
                             </div>
@@ -112,11 +97,11 @@ const Weather = () => {
                         <div className='grid gap-4'>
                             <div className='p-4 rounded-xl bg-bddlack border shadow'>
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
-                                    <LuClock3 /> <p>HOURLY FORECAST</p>
+                                    <LuClock3 /> <p>24 HOUR FORECAST</p>
                                 </div>
                                 <div className='py-4 max-w-xl overflow-auto flex items-center gap-2 text-whddite'>
                                     {
-                                        weeklyWeather?.hourly?.slice(0, 24)?.map((item, index) => (
+                                        Weather?.hourly?.slice(0, 24)?.map((item, index) => (
                                             <div className=' px-5 py-3 grid gap-2 text-center rounded-md' key={index}>
                                                 <h2 className='text-sm'>{new Date(item?.dt * 1000).toLocaleTimeString()}</h2>
                                                 <h1 className='text-xl font-medium'>{Math.floor(item?.temp)}°C</h1>
@@ -133,9 +118,8 @@ const Weather = () => {
                                 </div>
                                 <div className='py-4 max-w-xl overflow-auto flex items-center gap-4 text-whddite'>
                                     {
-                                        weeklyWeather?.daily?.map((item, index) => (
+                                        Weather?.daily?.map((item, index) => (
                                             <div className='px-6 py-3 grid gap-2 text-center rounded-md' key={index}>
-                                                <h2 className='text-sm'>{new Date(item?.dt * 1000).toLocaleDateString()}</h2>
                                                 <p className='text-xs text-slate-500'>{new Date(item?.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' })}</p>
                                                 <h1 className='text-xl font-medium'>{Math.floor(item?.temp?.day)}°C</h1>
                                                 <img src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
