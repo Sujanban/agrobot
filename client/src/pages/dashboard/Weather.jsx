@@ -60,7 +60,7 @@ const Weather = () => {
                                         <CiTempHigh className='' />
                                         <p className='text-sm'>FEELS LIKE</p>
                                     </div>
-                                    <h1 className='text-3xl'>{Weather?.current?.feels_like}</h1>
+                                    <h1 className='text-2xl'>{Weather?.current?.feels_like}</h1>
                                     <p className='text-xs text-stone-500'>°C</p>
                                 </div>
                                 <div className='p-2 space-y-2 border shadow rounded-xl'>
@@ -69,7 +69,7 @@ const Weather = () => {
                                         <p className='text-sm'>WIND</p>
                                     </div>
                                     <div>
-                                        <h1 className='text-3xl'>{Weather?.current?.wind_speed}</h1>
+                                        <h1 className='text-2xl'>{Weather?.current?.wind_speed}</h1>
                                     </div>
                                     <p className='text-xs text-stone-500'>km/h</p>
                                 </div>
@@ -78,7 +78,7 @@ const Weather = () => {
                                         <IoEyeOutline className='' />
                                         <p className='text-sm'>VISIBILITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>{Weather?.current?.visibility} </h1>
+                                    <h1 className='text-2xl'>{Weather?.current?.visibility} </h1>
                                     <p className='text-xs text-stone-500'>meter</p>
 
                                 </div>
@@ -87,7 +87,7 @@ const Weather = () => {
                                         <WiHumidity className='' />
                                         <p className='text-sm'>HUMIDITY</p>
                                     </div>
-                                    <h1 className='text-3xl'>{Weather?.current?.humidity}</h1>
+                                    <h1 className='text-2xl'>{Weather?.current?.humidity}</h1>
                                     <p className='text-xs text-stone-500'>%</p>
                                 </div>
                             </div>
@@ -102,10 +102,10 @@ const Weather = () => {
                                 <div className='py-4 max-w-xl overflow-auto flex items-center gap-2 text-whddite'>
                                     {
                                         Weather?.hourly?.slice(0, 24)?.map((item, index) => (
-                                            <div className=' px-5 py-3 grid gap-2 text-center rounded-md' key={index}>
+                                            <div className='min-w-32 border shadow px-5 py-3 grid gap-2 text-center rounded-md' key={index}>
                                                 <h2 className='text-sm'>{new Date(item?.dt * 1000).toLocaleTimeString()}</h2>
                                                 <h1 className='text-xl font-medium'>{Math.floor(item?.temp)}°C</h1>
-                                                <img src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
+                                                <img className='mx-auto' src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
                                                 <p className='text-[10px]'>{item?.weather[0]?.description}</p>
                                             </div>
                                         ))
@@ -119,17 +119,17 @@ const Weather = () => {
                                 <div className='py-4 max-w-xl overflow-auto flex items-center gap-4 text-whddite'>
                                     {
                                         Weather?.daily?.map((item, index) => (
-                                            <div className='px-6 py-3 grid gap-2 text-center rounded-md' key={index}>
+                                            <div className='min-w-32 border shadow px-6 py-3 grid gap-2 text-center rounded-md' key={index}>
                                                 <p className='text-xs text-slate-500'>{new Date(item?.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' })}</p>
                                                 <h1 className='text-xl font-medium'>{Math.floor(item?.temp?.day)}°C</h1>
-                                                <img src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
+                                                <img className='mx-auto' src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
                                                 <p className='text-[10px]'>{item?.weather[0]?.description}</p>
                                             </div>
                                         ))
                                     }
                                 </div>
                             </div>
-                            <div className='grid grid-cols-2 gap-4'>
+                            {/* <div className='grid grid-cols-2 gap-4'>
                                 <div className='p-4 space-y-2 bg-blfffack text-wfffhite rounded-xl border shadow'>
                                     <div className=' font-bold text-slate-500 flex items-center space-x-2'>
                                         <CiTempHigh className='' />
@@ -171,7 +171,7 @@ const Weather = () => {
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
