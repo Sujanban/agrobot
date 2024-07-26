@@ -26,8 +26,14 @@ const Weather = () => {
             // fetching api with lat and long
             const response2 = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data2 = await response2.json();
-            setWeeklyWeather(data2);
-            console.log(data2);
+            // setWeeklyWeather(data2);
+            // console.log(data2);
+
+
+            const response3 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=19.0760&lon=72.8777&appid=6e93b3d15872f914c6929fed9ea71e9a`);
+            const data3 = await response3.json();
+            setWeeklyWeather(data3);
+            console.log(data3);
 
 
         } catch (err) {
@@ -106,7 +112,7 @@ const Weather = () => {
                         <div className='grid gap-4'>
                             <div className='p-4 rounded-xl bg-bddlack border shadow'>
                                 <div className='p-2 font-bold text-slate-500 flex items-center space-x-2 border-b-2 border-stone-600'>
-                                    <LuClock3 /> <p>3 HOURLY FORECAST</p>
+                                    <LuClock3 /> <p>HOURLY FORECAST</p>
                                 </div>
                                 <div className='py-4 max-w-xl overflow-auto flex items-center gap-2 text-whddite'>
                                     {/* <div className='px-5 py-3 bg-slate-200  grid gap-2 text-center rounded-md'>
@@ -115,7 +121,7 @@ const Weather = () => {
                                         <IoRainy className='text-2xl mx-auto'/>
                                     </div> */}
                                     {
-                                        weeklyWeather?.list?.map((item, index) => (
+                                        weeklyWeather?.hourly?.map((item, index) => (
                                             <div className=' px-5 py-3 grid gap-2 text-center rounded-md' key={index}>
                                                 <h2 className='text-sm'>{item?.dt_txt?.slice(11, 16)}</h2>
                                                 <h1 className='text-xl font-medium'>{Math.floor(item?.main?.temp)}°C</h1>
