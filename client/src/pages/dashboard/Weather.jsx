@@ -30,7 +30,7 @@ const Weather = () => {
             // console.log(data2);
 
 
-            const response3 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=19.0760&lon=72.8777&appid=6e93b3d15872f914c6929fed9ea71e9a`);
+            const response3 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data3 = await response3.json();
             setWeeklyWeather(data3);
             console.log(data3);
@@ -121,10 +121,10 @@ const Weather = () => {
                                         <IoRainy className='text-2xl mx-auto'/>
                                     </div> */}
                                     {
-                                        weeklyWeather?.hourly?.map((item, index) => (
+                                        weeklyWeather?.hourly?.slice(0, 24)?.map((item, index) => (
                                             <div className=' px-5 py-3 grid gap-2 text-center rounded-md' key={index}>
-                                                <h2 className='text-sm'>{item?.dt_txt?.slice(11, 16)}</h2>
-                                                <h1 className='text-xl font-medium'>{Math.floor(item?.main?.temp)}°C</h1>
+                                                <h2 className='text-sm'>{new Date(item?.dt * 1000).toLocaleTimeString()}</h2>
+                                                <h1 className='text-xl font-medium'>{Math.floor(item?.temp)}°C</h1>
                                                 <img src={`http://openweathermap.org/img/w/` + item?.weather[0]?.icon + `.png`} alt="" />
                                             <p className='text-[10px]'>{item?.weather[0]?.description}</p>
                                             </div>
