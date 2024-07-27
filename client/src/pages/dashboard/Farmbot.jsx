@@ -10,7 +10,7 @@ const Farmbot = () => {
                 <h1 className='font-semibold text-2xl'>Farmbot</h1>
                 <div>
                     <div className='p-2 shadow border max-w-xl mx-auto overflow-auto  space-y-4 bordder shaddow rounded-xl'>
-                        <p className='p-4 bg-custom-blue font-medium rounded-md text-sm underline'>Ask the chatbot with your queries related to farming and agriculture.</p>
+                        <p className='p-4 bg-slate-200 font-medium rounded-md text-sm underline'>Ask the chatbot with your queries related to farming and agriculture.</p>
                         <div className='p-4 space-y-4 h-[60vh] overflow-auto'>
                             <div className='py-2 flex space-x-4'>
                                 <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-stone-800'>S</h1>
