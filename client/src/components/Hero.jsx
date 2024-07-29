@@ -60,8 +60,15 @@ const Hero = () => {
                                     Solving the problem of tomorrow with the smart solution. AI to your fingertips.
                                     <BsLightningCharge className='p-1 ml-2 ring-1 ring-green rounded-full text-green inline-flex' />
                                 </h1>
-                                <div className='my-4 rounded-xl p-4 bg-emerald-600'>
-                                    <h1>we makes farming smart</h1>
+                                <div className='relative  flex items-center justify-center'>
+                                    <div className='text-white my-4 rounded-xl p-4 bg-emerald-600 w-60'>
+                                        <h1 className='font-medium text-xl'>we makes farming smart</h1>
+                                        <p className='py-2 text-sm'>we link your farming with the growwing technology to change the way you farm</p>
+                                    </div>
+                                    <div className='text-white absolute top-0 -left-[30%] w-40 my-4 rounded-xl p-4 backdrop-blur-sm bg-white/20 shadow border border-white/20'>
+                                        <h1 className='font-medium text-4xl'>40+</h1>
+                                        <p className='py-2 text-sm'>Different disease identification</p>
+                                    </div>
                                 </div>
                                 {/* <div className='py-4 space-y-2'>
                                     <li className='bg-slate-100 p-2 rounded-xl list-none'>1. Easy and Fast Process.</li>
