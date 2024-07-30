@@ -1,11 +1,9 @@
 import React from 'react'
 import { BsLightningCharge } from 'react-icons/bs'
-import { FaRobot } from 'react-icons/fa'
-import speedometer from '../assets/speedometer.png'
 
 const Hero = () => {
     return (
-        <section className=''>
+        <section className='bg-slate-100'>
             <div className='px-4 py-8 max-w-7xl mx-auto space-y-8'>
                 {/* <div className='md:grid md:grid-cols-4'>
                     <div className='hidden md:block relative'>
@@ -62,12 +60,12 @@ const Hero = () => {
                                 </h1>
                                 <div className='relative  flex items-center justify-center'>
                                     <div className='text-white my-4 rounded-xl p-4 bg-emerald-600 w-60'>
-                                        <h1 className='font-medium text-xl'>we makes farming smart</h1>
+                                        <h1 className='font-medium text-xl'>Farming made smart</h1>
                                         <p className='py-2 text-sm'>we link your farming with the growwing technology to change the way you farm</p>
                                     </div>
                                     <div className='text-white absolute top-0 -left-[30%] w-40 my-4 rounded-xl p-4 backdrop-blur-sm bg-white/20 shadow border border-white/20'>
                                         <h1 className='font-medium text-4xl'>40+</h1>
-                                        <p className='py-2 text-sm'>Different disease identification</p>
+                                        <p className='py-2 text-sm text-green-300'>Different disease identification</p>
                                     </div>
                                 </div>
                                 {/* <div className='py-4 space-y-2'>
@@ -82,23 +80,23 @@ const Hero = () => {
 
                         <div className='py-4'>
                             <div className='p-4 border-b-2 grid grid-cols-3 gap-4'>
-                                <h1 className='m-auto flex items-center space-x-4'>
+                                <h1 className=' flex items-center space-x-4'>
                                     <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>1 </span>
                                     <span className='font-medium'>Easy and Fast Process</span>
                                 </h1>
                                 <p className='col-span-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus optio culpa reiciendis ab dolorum repellat eveniet aliquam inventore eaque nostrum.</p>
                             </div>
                             <div className='p-4 border-b-2 grid grid-cols-3 gap-4'>
-                                <h1 className='m-auto flex items-center space-x-4'>
-                                    <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>1 </span>
-                                    <span className='font-medium'>Easy and Fast Process</span>
+                                <h1 className=' flex items-center space-x-4'>
+                                    <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>2 </span>
+                                    <span className='font-medium'>100% Accuracy</span>
                                 </h1>
                                 <p className='col-span-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus optio culpa reiciendis ab dolorum repellat eveniet aliquam inventore eaque nostrum.</p>
                             </div>
                             <div className='p-4 border-b-2 grid grid-cols-3 gap-4'>
-                                <h1 className='m-auto flex items-center space-x-4'>
-                                    <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>1 </span>
-                                    <span className='font-medium'>Easy and Fast Process</span>
+                                <h1 className=' flex items-center space-x-4'>
+                                    <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>3 </span>
+                                    <span className='font-medium'>100% Confidentiality</span>
                                 </h1>
                                 <p className='col-span-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus optio culpa reiciendis ab dolorum repellat eveniet aliquam inventore eaque nostrum.</p>
                             </div>
