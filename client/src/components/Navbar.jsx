@@ -54,7 +54,7 @@ const Navbar = () => {
         </nav>
 
         <div className='flex items-center space-x-2'>
-          <Link to={"/register"} className='text-sm rounded-full border text-white bg-stone-900 px-4 py-2'>Get Started</Link>
+          <Link to={"/register"} className='text-sm rounded-full border border-gray-400 transition-all durration-200 ease-in-out hover:bg-green-300 px-4 py-2'>Register</Link>
         </div>
       </div>
 
