@@ -31,21 +31,21 @@ const Services = () => {
                         activeTab === 1 &&
                         <div className='relative shadow flex  gap-4 max-w-3xl flex-wrap'>
                             <img className='w-[700px] h-[500px] object-cover rounded-xl' src="https://plus.unsplash.com/premium_vector-1682307904375-1e8b895c745c?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                            <Link className='m-2 px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
+                            <Link className='m-2 px-4 py-2 shadow border rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
                         </div>
                     }
                     {
                         activeTab === 2 &&
                         <div className='relative shadow'>
                             <img className='w-[700px] h-[500px] object-cover rounded-xl' src="https://plus.unsplash.com/premium_vector-1714142580885-97d3f0e39f98?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                            <Link className='m-2 px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
+                            <Link className='m-2 px-4 py-2 shadow border rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
                         </div>
                     }
                     {
                         activeTab === 3 &&
                         <div className='relative shadow'>
                             <img className=' w-[700px] h-[500px] object-cover rounded-xl' src="https://plus.unsplash.com/premium_vector-1711987356317-e765e719f673?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                            <Link className='m-2 px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
+                            <Link className='m-2 px-4 py-2 shadow border rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
                         </div>
                     }
                 </div>
