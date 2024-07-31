@@ -29,3 +29,11 @@ div::-webkit-scrollbar {
   background-color: rgb(145, 145, 145);
   border-radius: 20px;
 }
+
+.banner{
+  background: url('./assets/banner.png');
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

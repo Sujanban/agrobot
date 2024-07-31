@@ -4,6 +4,7 @@ import React from 'react'
 import Howitworks from '@/components/Howitworks'
 import Services from '@/components/Services'
 import Footer from '@/components/Footer'
+import CtaBanner from '@/components/CtaBanner'
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
       <Hero />
       <Services/>
       <Howitworks/>
+      <CtaBanner/>
       <Footer/>
     </>
   )
