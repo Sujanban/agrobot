@@ -5,6 +5,7 @@ import Howitworks from '@/components/Howitworks'
 import Services from '@/components/Services'
 import Footer from '@/components/Footer'
 import CtaBanner from '@/components/CtaBanner'
+import Tesimonial from '@/components/Tesimonial'
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <Hero />
       <Services/>
       <Howitworks/>
+      <Tesimonial/>
       <CtaBanner/>
       <Footer/>
     </>
