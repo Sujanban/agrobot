@@ -6,6 +6,7 @@ import Services from '@/components/Services'
 import Footer from '@/components/Footer'
 import CtaBanner from '@/components/CtaBanner'
 import Tesimonial from '@/components/Tesimonial'
+import Feature from '@/components/Feature'
 
 const Index = () => {
   return (
@@ -13,7 +14,8 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Services/>
-      <Howitworks/>
+      <Feature/>
+      {/* <Howitworks/> */}
       <Tesimonial/>
       <CtaBanner/>
       <Footer/>
