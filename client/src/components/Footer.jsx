@@ -1,10 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaFacebookF } from "react-icons/fa6";
-import { FaTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -13,24 +8,24 @@ const Footer = () => {
         <div className=' px-12 py-20 '>
           <div className='flex justify-between'>
             <div className='flex space-x-16'>
-              <div className='grid space-y-4'>
+              <div className='flex flex-col space-y-4'>
                 <h1 className='text-xl'>Company</h1>
-                <Link className='text-white/70'>About Agrobot</Link>
-                <Link className='text-white/70'>Pricing</Link>
-                <Link className='text-white/70'>Demo</Link>
+                <Link className='text-white/70 text-sm'>About Agrobot</Link>
+                <Link className='text-white/70 text-sm'>Pricing</Link>
+                <Link className='text-white/70 text-sm'>Demo</Link>
               </div>
 
-              <div className='grid space-y-4'>
+              <div className='flex flex-col space-y-4'>
                 <h1 className='text-xl'>Resources</h1>
-                <Link className='text-white/70'>Blog</Link>
-                <Link className='text-white/70'>Services</Link>
-                <Link className='text-white/70'>Tool Library</Link>
+                <Link className='text-white/70 text-sm'>Blog</Link>
+                <Link className='text-white/70 text-sm'>Services</Link>
+                <Link className='text-white/70 text-sm'>Tool Library</Link>
               </div>
 
-              <div className='grid space-y-4'>
+              <div className='flex flex-col space-y-4'>
                 <h1 className='text-xl'>Legal</h1>
-                <Link className='text-white/70'>Terms of Use</Link>
-                <Link className='text-white/70'>Privacy Policy</Link>
+                <Link className='text-white/70 text-sm'>Terms of Use</Link>
+                <Link className='text-white/70 text-sm'>Privacy Policy</Link>
               </div>
             </div>
             <div className='max-w-xl space-y-4'>
