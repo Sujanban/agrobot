@@ -9,21 +9,21 @@ const Footer = () => {
           <div className='flex justify-between'>
             <div className='flex space-x-16'>
               <div className='flex flex-col space-y-4'>
-                <h1 className='text-xl'>Company</h1>
+                <h1 className='text-xl font-semibold'>Company</h1>
                 <Link className='text-white/70 text-sm'>About Agrobot</Link>
                 <Link className='text-white/70 text-sm'>Pricing</Link>
                 <Link className='text-white/70 text-sm'>Demo</Link>
               </div>
 
               <div className='flex flex-col space-y-4'>
-                <h1 className='text-xl'>Resources</h1>
+                <h1 className='text-xl  font-semibold'>Resources</h1>
                 <Link className='text-white/70 text-sm'>Blog</Link>
                 <Link className='text-white/70 text-sm'>Services</Link>
                 <Link className='text-white/70 text-sm'>Tool Library</Link>
               </div>
 
               <div className='flex flex-col space-y-4'>
-                <h1 className='text-xl'>Legal</h1>
+                <h1 className='text-xl font-semibold'>Legal</h1>
                 <Link className='text-white/70 text-sm'>Terms of Use</Link>
                 <Link className='text-white/70 text-sm'>Privacy Policy</Link>
               </div>

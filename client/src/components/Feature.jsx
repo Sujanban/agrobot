@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MdArrowOutward } from "react-icons/md";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 
+import disease from "../assets/disease2.png"
+import weather from "../assets/weather2.png"
+import chatbot from "../assets/chatbot2.png"
+
 
 const Feature = () => {
+    const [openTab, setOpenTab] = useState(1);
     return (
         <section className='bg-slate-200'>
             <div className='px-4 py-20 max-w-7xl mx-auto'>
@@ -30,6 +35,41 @@ const Feature = () => {
                             </button>
                         </button>
 
+                    </div>
+                </div>
+
+                {/* feature main tabs */}
+                <div className='my-4 p-8 grid grid-cols-3 space-x-4 bg-white rounded-3xl'>
+                    <div className='space-y-4'>
+                        <div onClick={() => setOpenTab(1)} className={`${openTab === 1 ? 'bg-slate-200' : ''} p-4 rounded-xl cursor-pointer space-y-2`}>
+                            <h1 className='text-xl font-semibold'>Engaging</h1>
+                            <p className='text-sm text-black/70'>Reach out to visitors proactivity using personalized chgatbot greetings. Turn website visitors into sales opportunities.</p>
+                        </div>
+                        <div onClick={() => setOpenTab(2)} className={`${openTab === 2 ? 'bg-slate-200' : ''} p-4 rounded-xl cursor-pointer space-y-2`}>
+                            <h1 className='text-xl font-semibold'>Nuture</h1>
+                            <p className='text-sm text-black/70'>Lead customers to a sale through the recommended purchases and tailored offerings.</p>
+                        </div>
+                        <div onClick={() => setOpenTab(3)} className={`${openTab === 3 ? 'bg-slate-200' : ''} p-4 rounded-xl cursor-pointer space-y-2`}>
+                            <h1 className='text-xl font-semibold'>Engaging</h1>
+                            <p className='text-sm text-black/70'>Reach out to visitors proactivity using personalized chgatbot greetings. Turn website visitors into sales opportunities.</p>
+                        </div>
+                    </div>
+                    <div className='col-span-2 max-h-[400px] p-8 feature-background rounded-3xl'>
+                        {
+                            openTab === 1
+                            &&
+                            <img className='h-full w-full object-contain mx-auto rounded-3xl' src={disease} alt="" />
+                        }
+                        {
+                            openTab === 2
+                            &&
+                            <img className='h-full w-full object-contain mx-auto rounded-3xl' src={weather} alt="" />
+                        }
+                        {
+                            openTab === 3
+                            &&
+                            <img className='h-full w-full object-contain mx-auto rounded-3xl' src={chatbot} alt="" />
+                        }
                     </div>
                 </div>
             </div>
