@@ -24,7 +24,7 @@ const Feature = () => {
                         </Link>
                     </div>
                     <div className='px-8 bg-white rounded-3xl'>
-                        <h1 className='text-5xl font-medium leading-normal'>Redefining Conversations and Enhancing User experiance.
+                        <h1 className='text-5xl font-medium leading-normal'><span className='bg-green-200 px-4 py-1 rounded-tl-xl rounded-br-xl'>Redefining agriculture</span> and Enhancing crops yeilds.
                         </h1>
                         <button className='my-4 inline-flex px-2 border border-stone-900 rounded-full'>
                             <button className='px-2 border border-stone-900 rounded-full'>
