@@ -9,6 +9,7 @@ const Feature = () => {
     return (
         <section className='bg-slate-200'>
             <div className='px-4 py-20 max-w-7xl mx-auto'>
+                {/* feature section header */}
                 <div className='flex justify-between space-x-4'>
                     <div className='max-w-sm'>
                         <p>Throughout your customers entire buying journey, Agrobot ai will allow you to delight them at every step of the way, from their first visit to the final purchase.</p>
@@ -17,7 +18,7 @@ const Feature = () => {
                             <MdArrowOutward />
                         </Link>
                     </div>
-                    <div className='px-8 bg-white rounded-xl'>
+                    <div className='px-8 bg-white rounded-3xl'>
                         <h1 className='text-5xl font-medium leading-normal'>Redefining Conversations and Enhancing User experiance.
                         </h1>
                         <button className='my-4 inline-flex px-2 border border-stone-900 rounded-full'>
