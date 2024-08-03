@@ -7,12 +7,14 @@ import Footer from '@/components/Footer'
 import CtaBanner from '@/components/CtaBanner'
 import Tesimonial from '@/components/Tesimonial'
 import Feature from '@/components/Feature'
+import Integration from '@/components/Integration'
 
 const Index = () => {
   return (
     <>
       <Navbar />
       <Hero />
+      <Integration/>
       <Services/>
       <Feature/>
       {/* <Howitworks/> */}
