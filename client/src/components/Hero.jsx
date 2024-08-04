@@ -59,13 +59,13 @@ const Hero = () => {
                                     <BsLightningCharge className='p-1 ml-2 ring-1 ring-green rounded-full text-green inline-flex' />
                                 </h1>
                                 <div className='relative  flex items-center justify-center'>
-                                    <div className='text-white my-4 rounded-xl p-4 bg-emerald-600 w-60'>
+                                    <div className=' my-4 rounded-xl p-4 bg-custom-green w-60'>
                                         <h1 className='font-medium text-xl'>Farming made smart</h1>
                                         <p className='py-2 text-sm'>we link your farming with the growwing technology to change the way you farm</p>
                                     </div>
                                     <div className='text-white absolute top-0 -left-[30%] w-40 my-4 rounded-xl p-4 backdrop-blur-sm bg-white/20 shadow border border-white/20'>
                                         <h1 className='font-medium text-4xl'>40+</h1>
-                                        <p className='py-2 text-sm text-green-300'>Different disease identification</p>
+                                        <p className='py-2 text-sm text-custom-green'>Different disease identification</p>
                                     </div>
                                 </div>
                                 {/* <div className='py-4 space-y-2'>

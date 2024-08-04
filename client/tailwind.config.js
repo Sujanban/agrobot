@@ -18,6 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'custom-green': '#00F97C',
         'custom-blue': '#5E82FE',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
