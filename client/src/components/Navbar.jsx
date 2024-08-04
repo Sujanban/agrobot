@@ -5,7 +5,7 @@ import { IoHomeOutline, IoChatboxOutline } from "react-icons/io5";
 import { TbHotelService } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { SiAboutdotme } from "react-icons/si";
-
+import { MdArrowOutward } from "react-icons/md";
 
 const Navbar = () => {
   const [toggleNavbar, setToggleNavbar] = useState(false)
@@ -53,7 +53,12 @@ const Navbar = () => {
         </nav>
 
         <div className='flex items-center space-x-2'>
-          <Link to={"/register"} className='text-sm rounded-full transition-all durration-200 ease-in-out bg-custom-green px-6 py-2'>Register</Link>
+          <Link to={"/register"} className='text-sm rounded-full transition-all durration-200 ease-in-out hover:bg-custom-green px-6 py-2'>Login</Link>
+          <Link to={"/register"}
+            className='text-sm rounded-full transition-all durration-200 ease-in-out bg-custom-green px-6 py-2'>
+            Register
+            <MdArrowOutward className='inline-flex ml-2' />
+          </Link>
         </div>
       </div>
 
