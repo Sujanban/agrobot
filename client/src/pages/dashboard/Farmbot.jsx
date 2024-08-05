@@ -1,6 +1,7 @@
 import Navbar from '@/components/dashboard/Navbar'
 import React from 'react'
 import { IoPaperPlaneOutline } from "react-icons/io5";
+import chatbot from '../../assets/chatbot.png'
 
 const Farmbot = () => {
     return (
@@ -28,7 +29,9 @@ const Farmbot = () => {
                                         Hello! How can I assist you today?
                                     </p>
                                 </div>
-                                <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-emerald-700'>A</h1>
+                                <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-custom-green'>
+                                    <img src={chatbot} alt="" />
+                                </h1>
                             </div>
                             <div className='py-2 flex space-x-4'>
                                 <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-stone-800'>S</h1>
@@ -47,8 +50,9 @@ const Farmbot = () => {
                                         Crop Production: This includes planting, growing, and harvesting crops such as grains, fruits, vegetables, and legumes. Farmers use techniques like plowing, sowing, irrigating, and applying fertilizers and pesticides to ensure healthy and abundant crops.
                                     </p>
                                 </div>
-                                <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-emerald-700'>A</h1>
-                            </div>
+                                <h1 className='h-10 w-10 flex items-center justify-center shrink-0 text-white  rounded-full bg-custom-green'>
+                                    <img src={chatbot} alt="" />
+                                </h1>                            </div>
                         </div>
                     </div>
                     <form className='flex max-w-xl mx-auto items-center gap-1'>
