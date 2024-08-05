@@ -105,8 +105,12 @@ const Farmbot = () => {
                                 </h1>                            </div>
                         </div>
                     </div>
-                    <form className='flex max-w-xl mx-auto items-center gap-1'>
-                        <input className='w-full px-4 py-3 border border-stone-900 rounded-md text-sm' type="text" placeholder='Ask something...' />
+                    <form onSubmit={generateAnswer} className='flex max-w-xl mx-auto items-center gap-1'>
+                        <input
+                            value={question}
+                            onChange={(e) => setQuestion(e.target.value)}
+                            disabled={generatingAnswer}
+                            className='w-full px-4 py-3 border border-stone-900 rounded-md text-sm' type="text" placeholder='Ask something...' />
                         <button className='text-xl text-white bg-stone-900 p-3 rounded-md'><IoPaperPlaneOutline /></button>
                     </form>
                 </div>
