@@ -1,9 +1,59 @@
 import Navbar from '@/components/dashboard/Navbar'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import chatbot from '../../assets/chatbot.png'
+import axios from "axios";
 
 const Farmbot = () => {
+    const [question, setQuestion] = useState("");
+    const [messages, setMessages] = useState([]);
+    const [generatingAnswer, setGeneratingAnswer] = useState(false);
+
+    useEffect(() => {
+        const savedMessages =
+            JSON.parse(localStorage.getItem("chatMessages")) || [];
+        setMessages(savedMessages);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("chatMessages", JSON.stringify(messages));
+    }, [messages]);
+
+
+    async function generateAnswer(e) {
+        setGeneratingAnswer(true);
+        e.preventDefault();
+        const newMessage = { sender: "user", text: question };
+        setMessages((prev) => [...prev, newMessage]);
+        setQuestion("");
+
+        try {
+            const response = await axios({
+                url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.NEXT_PUBLIC_API_GENERATIVE_LANGUAGE_CLIENT}`,
+                method: "post",
+                data: {
+                    contents: [{ parts: [{ text: newMessage.text }] }],
+                },
+            });
+
+            const botMessage = {
+                sender: "bot",
+                text: response.data.candidates[0].content.parts[0].text,
+            };
+            setMessages((prev) => [...prev, botMessage]);
+        } catch (error) {
+            console.log(error);
+            const errorMessage = {
+                sender: "bot",
+                text: "Sorry - Something went wrong. Please try again!",
+            };
+            setMessages((prev) => [...prev, errorMessage]);
+        }
+
+        setGeneratingAnswer(false);
+    }
+
+
     return (
         <div className='flex max-w-7xl mx-auto'>
             <Navbar />
