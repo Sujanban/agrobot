@@ -24,9 +24,9 @@ const Navbar = () => {
     },
     {
       id: 3,
-      name: 'How it Works',
+      name: 'Features',
       icon: <FaQuestion />,
-      path: '/howitworks'
+      path: '/features'
     },
     {
       id: 4,
@@ -53,7 +53,7 @@ const Navbar = () => {
         </nav>
 
         <div className='flex items-center space-x-2'>
-          <Link to={"/register"} className='text-sm rounded-full transition-all durration-200 ease-in-out hover:bg-custom-green px-6 py-2'>Login</Link>
+          <Link to={"/login"} className='text-sm rounded-full transition-all durration-200 ease-in-out hover:bg-custom-green px-6 py-2'>Login</Link>
           <Link to={"/register"}
             className='text-sm rounded-full transition-all durration-200 ease-in-out bg-custom-green px-6 py-2'>
             Register
@@ -66,7 +66,7 @@ const Navbar = () => {
       {/* mobile navigation */}
       <div className='md:hidden p-4 w-screen overflow-hidden'>
         <div className='py-2 flex justify-between align-center'>
-          <Link className='text-xl font-bold'>Agrobot</Link>
+          <Link to={"/"} className='text-xl font-bold'>Agrobot</Link>
           <button onClick={() => setToggleNavbar(!toggleNavbar)}>
             <HiMiniBars3BottomRight className='text-xl' />
           </button>

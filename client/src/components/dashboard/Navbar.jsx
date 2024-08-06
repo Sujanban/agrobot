@@ -53,7 +53,7 @@ const Navbar = () => {
                         !minNavbar ?
                             <div className='flex items-center'>
                                 <GiFireRing size={35} className='rounded border shadow p-2 text-custom-blue' />
-                                <Link className='p-2 text-xl font-bold'>Agrobot</Link>
+                                <Link to='/' className='p-2 text-xl font-bold'>Agrobot</Link>
                             </div>
                             :
                             <Link className='p-2 text-3xl mx-auto font-bold'>A</Link>

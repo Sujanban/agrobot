@@ -7,7 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 const Services = () => {
     const [activeTab, setActiveTab] = useState(1);
     return (
-        <section className='bg-slate-100'>
+        <section id='services' className='bg-slate-100'>
             <div className='px-4 py-20 max-w-7xl mx-auto '>
                 <h1 className='text-4xl font-medium max-w-md'>
                     <span className='text-green'>Smart Farming</span>
