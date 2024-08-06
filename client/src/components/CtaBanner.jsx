@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CtaBanner = () => {
     return (
-        <section className='py-20'>
+        <section id='contact' className='py-20'>
             <div className='banner p-20 max-w-7xl mx-auto '>
                 <h1 className='text-5xl max-w-4xl leading-normal font-medium'>Take control of your productivity with a Gemeni 4.0 chatbot now</h1>
                 <div className='flex items-center justify-between'>

@@ -20,19 +20,24 @@ const Navbar = () => {
       id: 2,
       name: 'Services',
       icon: <TbHotelService />,
-      path: '/services'
+      path: '#services'
     },
     {
       id: 3,
       name: 'Features',
       icon: <FaQuestion />,
-      path: '/features'
+      path: '#features'
+    },{
+      id: 4,
+      name: 'Testimonials',
+      icon: <SiAboutdotme />,
+      path: '#testimonials'
     },
     {
-      id: 4,
+      id: 5,
       name: 'Contact',
       icon: <IoChatboxOutline />,
-      path: '/contact'
+      path: '#contact'
     }
   ]
   return (
@@ -45,9 +50,9 @@ const Navbar = () => {
         <nav className='flex items-center gap-6'>
           {
             menuItems.map(item => (
-              <Link className='flex items-center space-x-1 text-sm' key={item.id} to={item.path}>
+              <a className='flex items-center space-x-1 text-sm' key={item.id} href={item.path}>
                 <span>{item.name}</span>
-              </Link>
+              </a>
             ))
           }
         </nav>

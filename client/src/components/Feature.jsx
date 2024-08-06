@@ -12,7 +12,7 @@ import chatbot from "../assets/chatbot2.png"
 const Feature = () => {
     const [openTab, setOpenTab] = useState(1);
     return (
-        <section className='bg-slate-200'>
+        <section id='features' className='bg-slate-200'>
             <div className='px-4 py-20 max-w-7xl mx-auto'>
                 {/* feature section header */}
                 <div className='flex justify-between space-x-4'>
