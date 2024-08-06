@@ -1,5 +1,5 @@
 import Navbar from '@/components/dashboard/Navbar'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import chatbot from '../../assets/chatbot.png'
 import ReactMarkdown from "react-markdown";
@@ -11,6 +11,7 @@ const Farmbot = () => {
     const [messages, setMessages] = useState([]);
     const [generatingAnswer, setGeneratingAnswer] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const chatContainerRef = useRef(null);
 
     useEffect(() => {
         const savedMessages =
@@ -22,6 +23,11 @@ const Farmbot = () => {
         localStorage.setItem("chatMessages", JSON.stringify(messages));
     }, [messages]);
 
+    useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
+    }, [messages]);
 
     async function generateAnswer(e) {
         setGeneratingAnswer(true);
@@ -47,11 +53,7 @@ const Farmbot = () => {
             }
 
             const data = await response.json();
-
-            console.log(data);
-
             setIsLoading(false);
-
             const botMessage = {
                 sender: "bot",
                 text: data.candidates[0].content.parts[0].text,
@@ -65,11 +67,8 @@ const Farmbot = () => {
             };
             setMessages((prev) => [...prev, errorMessage]);
         }
-
         setGeneratingAnswer(false);
     }
-
-    console.log(messages)
 
     return (
         <div className='flex max-w-7xl mx-auto'>
@@ -77,11 +76,11 @@ const Farmbot = () => {
             <div className='h-screen overflow-auto p-8 w-full space-y-4'>
                 <h1 className='font-semibold text-2xl'>Farmbot</h1>
                 <div>
-                    <div className='p-2 shadow border max-w-xl mx-auto overflow-auto  space-y-4 bordder shaddow rounded-xl'>
+                    <div className='p-2 max-w-xl mx-auto overflow-auto space-y-4'>
                         <p className='p-4 bg-slate-200 font-medium rounded-md text-sm underline'>Ask the chatbot with your queries related to farming and agriculture.</p>
 
                         {/* looping through messages */}
-                        <div className='p-4 space-y-4 h-[65vh] overflow-auto'>
+                        <div ref={chatContainerRef} className='p-4 space-y-4 h-[65vh] overflow-auto'>
                             {
                                 messages && messages.map((msg, index) =>
                                     <div key={index} >
@@ -89,7 +88,7 @@ const Farmbot = () => {
                                             <div className='py-2 flex space-x-4 justify-end'>
                                                 <div className='space-y-2'>
                                                     <h1 className='font-semibold text-right'>You</h1>
-                                                    <div className='p-2 bg-blue-500 text-white rounded-l-xl rounded-b-xl text-xs'>
+                                                    <div className='px-3 py-2 bg-blue-500 text-white rounded-l-xl rounded-b-xl text-sm'>
                                                         <ReactMarkdown>
                                                             {msg.text}
                                                         </ReactMarkdown>
@@ -108,7 +107,7 @@ const Farmbot = () => {
                                             </h1>
                                             <div className='space-y-2'>
                                                 <h1 className='font-semibold'>Agrobot</h1>
-                                                <div className='p-2 bg-gray-100 rounded-r-xl rounded-b-xl text-xs'>
+                                                <div className='p-2 bg-gray-100 rounded-r-xl rounded-b-xl text-sm'>
                                                     <ReactMarkdown>
                                                         {msg.text}
                                                     </ReactMarkdown>
@@ -120,7 +119,13 @@ const Farmbot = () => {
                                 )
                             }
                             {
-                                messages.length === 0 && <p className='text-center'>Start by asking the bot something</p>
+                                messages.length === 0 &&
+                                <div className='flex flex-col items-center'>
+                                    <img className='w-28 bg-custom-green rounded-full' src={chatbot} alt="" />
+                                    <h1 className='p-4 text-2xl font-semibold'>Hi! Welcome to the Agrobot</h1>
+                                    <h1 className='text-center max-w-sm'>Ask the chatbot with your queries related to farming and agriculture.</h1>
+                                </div>
+
                             }
                             {
                                 isLoading && <BeatLoader />
