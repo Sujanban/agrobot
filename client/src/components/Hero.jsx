@@ -68,12 +68,6 @@ const Hero = () => {
                                         <p className='py-2 text-sm text-custom-green'>Different disease identification</p>
                                     </div>
                                 </div>
-                                {/* <div className='py-4 space-y-2'>
-                                    <li className='bg-slate-100 p-2 rounded-xl list-none'>1. Easy and Fast Process.</li>
-                                    <li className='bg-slate-100 p-2 rounded-xl list-none'>2. 100% Accuracy.</li>
-                                    <li className='bg-slate-100 p-2 rounded-xl list-none'>3. 100% Confidentiality.</li>
-                                    <p className='pt-8 text-slate-500 underline text-sm'>We test plant with 99.99% accuracy with well tested dataset and AI models.</p>
-                                </div> */}
                             </div>
                             <img className='rounded-xl' src="https://plus.unsplash.com/premium_photo-1664475320136-53a63b21612a?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
                         </div>
