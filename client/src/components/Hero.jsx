@@ -78,21 +78,23 @@ const Hero = () => {
                                     <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>1 </span>
                                     <span className='font-medium'>Easy and Fast Process</span>
                                 </h1>
-                                <p className='col-span-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus optio culpa reiciendis ab dolorum repellat eveniet aliquam inventore eaque nostrum.</p>
+                                <p className='col-span-2'>Just signup and use our services. no need to wait for hours just to get started.</p>
                             </div>
                             <div className='p-4 border-b-2 grid grid-cols-3 gap-4'>
                                 <h1 className=' flex items-center space-x-4'>
                                     <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>2 </span>
                                     <span className='font-medium'>100% Accuracy</span>
                                 </h1>
-                                <p className='col-span-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus optio culpa reiciendis ab dolorum repellat eveniet aliquam inventore eaque nostrum.</p>
+                                <p className='col-span-2'>
+                                We test plant with 99.99% accuracy with well tested dataset and AI models.
+                                </p>
                             </div>
                             <div className='p-4 border-b-2 grid grid-cols-3 gap-4'>
                                 <h1 className=' flex items-center space-x-4'>
                                     <span className='h-6 w-6 flex items-center justify-center p-1 border rounded-full ring-slate-900 ring-1'>3 </span>
                                     <span className='font-medium'>100% Confidentiality</span>
                                 </h1>
-                                <p className='col-span-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus optio culpa reiciendis ab dolorum repellat eveniet aliquam inventore eaque nostrum.</p>
+                                <p className='col-span-2'>Your data is safe to us and we insure safe storage of your data through encription mechanisms. Say no to data leaks</p>
                             </div>
                         </div>
                     </div>
