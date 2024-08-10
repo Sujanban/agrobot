@@ -120,10 +120,12 @@ const Farmbot = () => {
                             }
                             {
                                 messages.length === 0 &&
-                                <div className='flex flex-col items-center'>
-                                    <img className='w-28 bg-custom-green rounded-full' src={chatbot} alt="" />
-                                    <h1 className='p-4 text-2xl font-semibold'>Hi! Welcome to the Agrobot</h1>
-                                    <h1 className='text-center max-w-sm'>Ask the chatbot with your queries related to farming and agriculture.</h1>
+                                <div className='h-full flex justify-center items-center'>
+                                    <div className='flex flex-col items-center '>
+                                        <img className='w-16 bg-custom-green rounded-full' src={chatbot} alt="" />
+                                        <h1 className='px-4 text-xl font-semibold'>Hi! Welcome to the Agrobot</h1>
+                                        <h1 className='text-center text-sm text-black/70 max-w-sm'>Ask the chatbot with your queries related to farming and agriculture.</h1>
+                                    </div>
                                 </div>
 
                             }
