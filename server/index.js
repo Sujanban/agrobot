@@ -20,12 +20,6 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-
 // handeling routes
 app.use("/api/auth", authRoutes);
 
