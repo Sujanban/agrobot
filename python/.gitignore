@@ -1,1 +1,5 @@
 /model
+.idea
+__pycache__
+env
+.env
