@@ -4,57 +4,39 @@ import { GoPaperclip } from "react-icons/go";
 import { CiImageOn } from "react-icons/ci";
 import { PiMagicWandLight } from "react-icons/pi";
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 
 const Diseasepredictor = () => {
-    // const [file, setFile] = useState(null);
-    // const [result, setResult] = useState(null);
-
-    // const handleFileChange = (e) => {
-    //     setFile(e.target.files[0]);
-    // };
-
-    // const handleUpload = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('image', file);
-
-    //     try {
-    //         const response = await axios.post('http://127.0.0.1:5000/submit', formData);
-    //         setResult(response.data.res);
-    //     } catch (error) {
-    //         console.error('Error uploading file:', error);
-    //     }
-    // };
-
     const [file, setFile] = useState(null);
-  const [result, setResult] = useState(null);
+    const [result, setResult] = useState(null);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
 
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('image', file);
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('image', file);
 
-    try {
-      const response = await fetch('http://localhost:5000/submit', {
-        method: 'POST',
-        body: formData,
-      });
+        try {
+            const response = await fetch('http://localhost:5000/submit', {
+                method: 'POST',
+                body: formData,
+            });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-      const data = await response.json();
-      setResult(data.res);
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    }
-  };
+            const data = await response.json();
+            setResult(data.res);
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            toast.error("Failed detecting a plant disease. Please try again with another image.");
+        }
+    };
 
 
     return (
@@ -67,15 +49,18 @@ const Diseasepredictor = () => {
                         <h1 className='font-medium text-xl text-center'>Upload an Image</h1>
                         <p className='text-sm text-gray-500 text-center'>For best results, images should be atleast 1280x720 px in jpg, png or jpeg format</p>
                         <form>
-                            <div className='py-8 border-2 border-[#5E82FE] p-4 text-center rounded-xl shadow space-y-2'>
-                                <CiImageOn className='mx-auto text-5xl p-2 rounded-full bg-slate-100 shadow border' />
-                                <h2 className='font-medium '>Drag and Drop image files to upload</h2>
-                                <p className='text-sm text-gray-500'>Your images will be private and only visible to you</p>
-                                <input type="file" onChange={handleFileChange} />
-                                <input type='submit' className='text-sm shadow px-4 py-2 border rounded-md' value='Select files' />
-
-                            </div>
-                            <div className='flex  justify-end'>
+                            <label htmlFor="upload-photo">
+                                <div className='py-8 border-2 border-[#5E82FE] p-4 text-center rounded-xl shadow space-y-2'>
+                                    <CiImageOn className='mx-auto text-5xl p-2 rounded-full bg-slate-100 shadow border' />
+                                    <h2 className='font-medium '>Drag and Drop image files to upload</h2>
+                                    <p className='text-sm text-gray-500'>Your images will be private and only visible to you</p>
+                                    <div className='pt-2'>
+                                        <input name="photo" id="upload-photo" type="file" hidden onChange={handleFileChange} />
+                                        <label className='text-sm shadow px-4 py-2 border rounded-md' htmlFor="upload-photo">Select File</label>
+                                    </div>
+                                </div>
+                            </label>
+                            <div className='mt-4 flex  justify-end'>
                                 <button onClick={handleUpload} className=' flex items-center space-x-2 bg-stone-900  text-sm text-white px-4 py-2 rounded-md'><PiMagicWandLight /><span>Predict</span></button>
                             </div>
                         </form>
