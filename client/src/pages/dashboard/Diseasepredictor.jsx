@@ -49,14 +49,14 @@ const Diseasepredictor = () => {
                         <h1 className='font-medium text-xl text-center'>Upload an Image</h1>
                         <p className='text-sm text-gray-500 text-center'>For best results, images should be atleast 1280x720 px in jpg, png or jpeg format</p>
                         <form>
-                            <label htmlFor="upload-photo">
+                            <label htmlFor="upload-photo" className='cursor-pointer'>
                                 <div className='py-8 border-2 border-[#5E82FE] p-4 text-center rounded-xl shadow space-y-2'>
                                     <CiImageOn className='mx-auto text-5xl p-2 rounded-full bg-slate-100 shadow border' />
                                     <h2 className='font-medium '>Drag and Drop image files to upload</h2>
                                     <p className='text-sm text-gray-500'>Your images will be private and only visible to you</p>
                                     <div className='pt-2'>
                                         <input name="photo" id="upload-photo" type="file" hidden onChange={handleFileChange} />
-                                        <label className='text-sm shadow px-4 py-2 border rounded-md' htmlFor="upload-photo">Select File</label>
+                                        <label className='text-sm cursor-pointer shadow px-4 py-2 border rounded-md' htmlFor="upload-photo">Select File</label>
                                     </div>
                                 </div>
                             </label>
