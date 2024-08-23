@@ -7,30 +7,56 @@ import axios from 'axios';
 
 
 const Diseasepredictor = () => {
+    // const [file, setFile] = useState(null);
+    // const [result, setResult] = useState(null);
+
+    // const handleFileChange = (e) => {
+    //     setFile(e.target.files[0]);
+    // };
+
+    // const handleUpload = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append('image', file);
+
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:5000/submit', formData);
+    //         setResult(response.data.res);
+    //     } catch (error) {
+    //         console.error('Error uploading file:', error);
+    //     }
+    // };
+
     const [file, setFile] = useState(null);
-    const [result, setResult] = useState(null);
+  const [result, setResult] = useState(null);
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
-    const handleUpload = async () => {
-        const formData = new FormData();
-        formData.append('image', file);
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', file);
 
-        try {
-            const response = await axios.post('http://localhost:5000/submit', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-                },
-            });
-            setResult(response.data.res);
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        }
-    };
+    try {
+      const response = await fetch('http://localhost:5000/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setResult(data.res);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+
+
     return (
         <div className='flex max-w-7xl mx-auto h-screen'>
             <Navbar />
