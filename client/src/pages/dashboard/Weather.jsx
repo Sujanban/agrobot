@@ -7,19 +7,22 @@ import { WiHumidity } from "react-icons/wi";
 import { LuClock3 } from "react-icons/lu";
 import { CiCalendar } from "react-icons/ci";
 import { FaWind } from "react-icons/fa";
-
+import { HashLoader } from 'react-spinners';
 
 const Weather = () => {
     const [city, setCity] = useState("kathmandu");
     const [Weather, setWeather] = useState({});
+    const [loading, setLoading] = useState(false);
     const fetchWeather = async () => {
         try {
+            setLoading(true)
             const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?&units=metric&q=` + city + `&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data = await response.json();
 
             const response3 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=` + data?.coord?.lat + `&lon=` + data?.coord?.lon + `&units=metric&appid=6e93b3d15872f914c6929fed9ea71e9a`);
             const data3 = await response3.json();
             setWeather(data3);
+            setLoading(false)
             console.log(data3);
         } catch (err) {
             console.log(err)
@@ -34,6 +37,14 @@ const Weather = () => {
     useEffect(() => {
         fetchWeather();
     }, [])
+
+    if (loading) {
+        return (
+            <div className='flex justify-center items-center h-screen'>
+                <HashLoader color="#00F97C"  />
+            </div>
+        )
+    }
 
 
     return (

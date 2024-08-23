@@ -9,6 +9,7 @@ import Weather from './pages/dashboard/Weather'
 import Farmbot from './pages/dashboard/Farmbot'
 import Diseasepredictor from './pages/dashboard/Diseasepredictor'
 import Users from './pages/dashboard/Users'
+import Testimonials from './pages/dashboard/Testimonials'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/farmbot" element={<Farmbot/>} />
         <Route path="/diseasepredictor" element={<Diseasepredictor/>} />
         <Route path="/users" element={<Users/>} />
+        <Route path='/testimonials' element={<Testimonials/>}/>
       </Routes>
     </>
   )

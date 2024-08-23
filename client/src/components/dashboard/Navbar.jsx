@@ -9,6 +9,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { HiOutlineSupport } from "react-icons/hi";
 import { FiUsers } from "react-icons/fi";
 import { RiHome6Line } from "react-icons/ri";
+import { MdRateReview } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
 
 
 const Navbar = () => {
@@ -39,6 +41,11 @@ const Navbar = () => {
             name: 'Users',
             path: '/users',
             icon: <FiUsers />
+        },
+        {
+            name: 'Testimonials',
+            path: '/testimonials',
+            icon: <MdRateReview />
         }
     ]
     return (
@@ -103,28 +110,12 @@ const Navbar = () => {
                         ))
                     }
                 </div>
+
                 <div className='py-4 grid gap-2'>
-                    <NavLink to={'/support'} className={({ isActive }) =>
-                        isActive ?
-                            `p-2 text-sm font-medium rounded-md space-x-4 shadow border flex items-center`
-                            :
-                            `p-2 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`
-
-                    }>
-                        <HiOutlineSupport className='text-xl' />
-                        {!minNavbar && <span>Support</span>}
-                    </NavLink>
-
-                    <NavLink to={'/settings'} className={({ isActive }) =>
-                        isActive ?
-                            `p-2 text-sm font-medium rounded-md space-x-4 shadow border flex items-center`
-                            :
-                            `p-2 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`
-
-                    }>
-                        <IoSettingsOutline className='text-xl' />
-                        {!minNavbar && <span>Settings</span>}
-                    </NavLink>
+                    <button className={`p-2 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`}>
+                        <MdLogout className='text-xl' />
+                        {!minNavbar && <span>Logout</span>}
+                    </button>
                 </div>
             </div>
         </div>

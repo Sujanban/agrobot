@@ -130,7 +130,7 @@ const Farmbot = () => {
 
                             }
                             {
-                                isLoading && <BeatLoader />
+                                isLoading && <BeatLoader color="#36d7b7" />
                             }
                         </div>
 

@@ -5,14 +5,17 @@ import { CiImageOn } from "react-icons/ci";
 import { PiMagicWandLight } from "react-icons/pi";
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { HashLoader } from 'react-spinners';
 
 
 const Diseasepredictor = () => {
     const [file, setFile] = useState(null);
     const [result, setResult] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
+        console.log(e.target.files[0])
     };
 
     const handleUpload = async (e) => {
@@ -21,6 +24,7 @@ const Diseasepredictor = () => {
         formData.append('image', file);
 
         try {
+            setLoading(true);
             const response = await fetch('http://localhost:5000/submit', {
                 method: 'POST',
                 body: formData,
@@ -32,7 +36,10 @@ const Diseasepredictor = () => {
 
             const data = await response.json();
             setResult(data.res);
+
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.error('Error uploading file:', error);
             toast.error("Failed detecting a plant disease. Please try again with another image.");
         }
@@ -57,11 +64,25 @@ const Diseasepredictor = () => {
                                     <div className='pt-2'>
                                         <input name="photo" id="upload-photo" type="file" hidden onChange={handleFileChange} />
                                         <label className='text-sm cursor-pointer shadow px-4 py-2 border rounded-md' htmlFor="upload-photo">Select File</label>
+                                        {
+                                            file && <div className='mt-4 flex items-center space-x-2 justify-center'>
+                                                <GoPaperclip className='text-sm' />
+                                                <p>{file.name}</p>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </label>
                             <div className='mt-4 flex  justify-end'>
-                                <button onClick={handleUpload} className=' flex items-center space-x-2 bg-stone-900  text-sm text-white px-4 py-2 rounded-md'><PiMagicWandLight /><span>Predict</span></button>
+                                <button onClick={handleUpload} className=' flex items-center space-x-2 bg-stone-900  text-sm text-white px-4 py-2 rounded-md'>
+                                    {
+                                        loading ? <div className='flex justify-center items-center'>
+                                            <HashLoader color='white' size={15} />
+                                        </div> :
+                                    <PiMagicWandLight />
+                                    }
+                                    <span>Predict</span>
+                                </button>
                             </div>
                         </form>
                         {result && (
