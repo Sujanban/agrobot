@@ -8,9 +8,7 @@ import { VscTrash, VscEdit } from 'react-icons/vsc';
 const Users = () => {
     const [users, setUsers] = useState(null);
     const [modal, setModal] = useState(false);
-    const [modelData, setModalData] = useState(null);
-
-    console.log(modelData)
+    const [modelData, setModelData] = useState(null);
 
 
     const getUsers = async () => {
@@ -35,20 +33,25 @@ const Users = () => {
 
     const handleModelToggle = (data) => {
         setModal(!modal);
-        setModalData(data);
+        setModelData(data);
     }
 
 
-    const updateUser = async ({modelData}) => {
-        // modelData.preventDefault();
+    const updateUser = async (e) => {
+        e.preventDefault();
+        console.log(modelData);
         try {
-            console.log(modelData);
+            const res = await axios.post('/api/users/editUser', modelData);
+            console.log(res.data);
+            // if (res.data.message) {
+            //     getUsers();
+            // }
         } catch (err) {
             console.log(err);
         }
     }
 
-    
+
 
     useEffect(() => {
         getUsers();
@@ -81,7 +84,7 @@ const Users = () => {
                                                     <tr className="bg-white border-b" key={index}>
                                                         <td className="px-3 md:px-6 py-2">{index + 1}</td>
                                                         <td className="px-3 md:px-6 py-2">{user.email}</td>
-                                                        <td className="px-3 md:px-6 py-2">{user.role}</td>
+                                                        <td className="px-3 md:px-6 py-2">{user.role == 1 ? 'Admin' : 'User'}</td>
                                                         <td className="px-3 md:px-6 py-2 space-x-1">
                                                             <button onClick={() => deleteUser(user._id)} className='py-2 px-2 md:px-4 text-sm text-orange-600 bg-orange-100 transition-all duration-300 hover:bg-orange-200 rounded-xl'><VscTrash size={20} /></button>
                                                             <button onClick={() => handleModelToggle(user)} className='py-2 px-2 md:px-4 text-sm text-emerald-600 bg-emerald-100 transition-all duration-300 hover:bg-emerald-200 rounded-xl'><VscEdit size={20} /></button>
@@ -124,24 +127,29 @@ const Users = () => {
                                 <div className="grid gap-4 mb-4 grid-cols-2">
                                     <div className="col-span-2">
                                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
-                                        <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type email here" required=""  value={modelData && modelData.username} onChange={(e) => setModelData({ ...modelData, username: e.target.value })} />
+                                        <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type email here" required="" value={modelData && modelData.username} onChange={(e) => setModelData({ ...modelData, username: e.target.value })} />
                                     </div>
                                     <div className="col-span-2">
                                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
-                                        <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type email here" required=""  value={modelData && modelData.email} onChange={(e) => setModelData({ ...modelData, email: e.target.value })} />
+                                        <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type email here" required="" value={modelData && modelData.email} onChange={(e) => setModelData({ ...modelData, email: e.target.value })} />
                                     </div>
                                     <div className="col-span-2 sm:col-span-1">
                                         <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
                                         <input type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Password" required="" value={modelData && modelData.password} onChange={(e) => setModelData({ ...modelData, password: e.target.value })} />
                                     </div>
+
                                     <div className="col-span-2 sm:col-span-1">
-                                        <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 ">Role</label>
-                                        <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5    ">
-                                            <option selected={modelData && modelData.role}>{modelData && modelData.role === "1" ? "Admin" : "User"}</option>
+                                        <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">Role</label>
+                                        <select
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
+                                            value={modelData?.role || "0"} // Bind the select value to modelData.role, defaulting to "0"
+                                            onChange={(e) => setModelData({ ...modelData, role: e.target.value })} // Handle role update
+                                        >
                                             <option value="1">Admin</option>
                                             <option value="0">User</option>
                                         </select>
                                     </div>
+
                                 </div>
                                 <button onClick={updateUser} type="submit" className="space-x-3 text-white flex items-center bg-stone-900 hover:bg-stone-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     <VscEdit />
