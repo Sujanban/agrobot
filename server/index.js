@@ -6,6 +6,7 @@ const router = express.Router();
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
+const testimonialRoutes = require("./routes/testimonialRoutes");
 
 dotenv.config();
 const app = express();
@@ -26,6 +27,9 @@ app.use("/api/auth", authRoutes);
 
 // handelinmg users
 app.use("/api/users", userRoutes);
+
+// handeling testimonials
+app.use("/api/testimonials", testimonialRoutes);
 
 // chat routes
 app.use("/api/chat", chatRoutes);
