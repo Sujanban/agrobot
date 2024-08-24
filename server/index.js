@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const router = express.Router();
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 
 dotenv.config();
@@ -22,6 +23,9 @@ mongoose
 
 // handeling routes
 app.use("/api/auth", authRoutes);
+
+// handelinmg users
+app.use("/api/users", userRoutes);
 
 // chat routes
 app.use("/api/chat", chatRoutes);
