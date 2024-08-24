@@ -11,6 +11,21 @@ import { IoFunnelOutline } from 'react-icons/io5'
 
 const Users = () => {
     const [users, setUsers] = useState(null);
+    console.log(users)
+
+    const getUsers = async () => {
+        try {
+            const res = await axios.get('/api/users');
+            setUsers(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        getUsers();
+    }, [])
+
     return (
         <div className='flex max-w-7xl mx-auto'>
             <Navbar />
@@ -27,21 +42,25 @@ const Users = () => {
                                         <tr className=''>
                                             <th scope="col" className="px-3 md:px-6 py-3">SN</th>
                                             <th scope="col" className="px-3 md:px-6 py-3">Email</th>
-                                            <th scope="col" className="px-3 md:px-6 py-3">Name</th>
                                             <th scope="col" className="px-3 md:px-6 py-3">Role</th>
                                             <th scope="col" className="px-3 md:px-6 py-3">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className='text-xs sm:text-sm border-b'>
-                                            <td scope="col" className="px-3 md:px-6 py-2">1</td>
-                                            <td scope="col" className="px-3 md:px-6 py-2">bansujan@gmail.com</td>
-                                            <td scope="col" className="px-3 md:px-6 py-2 capitalize">Sujan Ban</td>
-                                            <td scope="col" className="px-3 md:px-6 py-2">{'admin'}</td>
-                                            <td scope="col" className="px-3 md:px-6 py-2">
-                                                <button className='py-2 px-2 md:px-4 text-sm text-orange-600 bg-orange-100 transition-all duration-300 hover:bg-orange-200 rounded-xl'><VscTrash size={20} /></button>
-                                            </td>
-                                        </tr>
+                                        {
+                                            users && users.map((user, index) =>
+                                                <tr className="bg-white border-b" key={index}>
+                                                    <td className="px-3 md:px-6 py-2">{index + 1}</td>
+                                                    <td className="px-3 md:px-6 py-2">{user.email}</td>
+                                                    <td className="px-3 md:px-6 py-2">{user.role}</td>
+                                                    <td className="px-3 md:px-6 py-2">
+                                                        <button className='py-2 px-2 md:px-4 text-sm text-orange-600 bg-orange-100 transition-all duration-300 hover:bg-orange-200 rounded-xl'><VscTrash size={20} /></button>
+                                                    </td>
+                                                </tr>
+
+
+                                            )
+                                        }
                                     </tbody>
                                 </table>
                             </div>
