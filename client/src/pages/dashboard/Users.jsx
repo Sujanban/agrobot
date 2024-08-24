@@ -11,12 +11,27 @@ import { IoFunnelOutline } from 'react-icons/io5'
 
 const Users = () => {
     const [users, setUsers] = useState(null);
-    console.log(users)
-
     const getUsers = async () => {
         try {
             const res = await axios.get('/api/users');
             setUsers(res.data);
+            console.log(users)
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const deleteUser = async (id) => {
+        try {
+            const res = await axios.delete(`/api/users/deleteUser/${id}`);
+            // console.log(res);
+            if(res.data.message){
+                // toast.success(res.data);
+                getUsers();
+            }
+            // if(res.data.error){
+            //     toast.error(res.data.error);
+            // }
         } catch (err) {
             console.log(err);
         }
@@ -54,7 +69,7 @@ const Users = () => {
                                                     <td className="px-3 md:px-6 py-2">{user.email}</td>
                                                     <td className="px-3 md:px-6 py-2">{user.role}</td>
                                                     <td className="px-3 md:px-6 py-2">
-                                                        <button className='py-2 px-2 md:px-4 text-sm text-orange-600 bg-orange-100 transition-all duration-300 hover:bg-orange-200 rounded-xl'><VscTrash size={20} /></button>
+                                                        <button onClick={() => deleteUser(user._id)} className='py-2 px-2 md:px-4 text-sm text-orange-600 bg-orange-100 transition-all duration-300 hover:bg-orange-200 rounded-xl'><VscTrash size={20} /></button>
                                                     </td>
                                                 </tr>
 

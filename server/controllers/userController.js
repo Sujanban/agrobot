@@ -23,10 +23,13 @@ const editUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const { id } = req.body;
-        const user = await User.findById(id);
-        await user.remove();
-        res.json(user);
+        const {id} = req.params;
+        const user = await User.findByIdAndDelete(id);
+        if (user) {
+            res.json({message: 'User deleted Successfully'});
+        } else{
+            res.json({error: 'User not found'});
+        }
     } catch (err) {
         console.log(err);
     }
