@@ -29,7 +29,7 @@ const editUser = async (req, res) => {
     }
     await user.save();
     console.log('user updated sucessfully!')
-    res.json(user);
+    res.json({ message: "User updated Successfully" });
   } catch (err) {
     console.log(err);
     res.json({ error: "Server Error!" });

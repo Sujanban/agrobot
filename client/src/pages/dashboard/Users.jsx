@@ -7,7 +7,7 @@ import { VscTrash, VscEdit } from 'react-icons/vsc';
 
 const Users = () => {
     const [users, setUsers] = useState(null);
-    const [modal, setModal] = useState(false);
+    const [model, setModel] = useState(false);
     const [modelData, setModelData] = useState(null);
 
 
@@ -24,7 +24,11 @@ const Users = () => {
         try {
             const res = await axios.delete(`/api/users/deleteUser/${id}`);
             if (res.data.message) {
+                toast.success(res.data.message);
                 getUsers();
+            }
+            if(res.data.error) {
+                toast.error(res.data.error);
             }
         } catch (err) {
             console.log(err);
@@ -32,7 +36,7 @@ const Users = () => {
     };
 
     const handleModelToggle = (data) => {
-        setModal(!modal);
+        setModel(!model);
         setModelData(data);
     }
 
@@ -43,9 +47,14 @@ const Users = () => {
         try {
             const res = await axios.post('/api/users/editUser', modelData);
             console.log(res.data);
-            // if (res.data.message) {
-            //     getUsers();
-            // }
+            if (res.data.message) {
+                toast.success(res.data.message);
+                getUsers();
+            }
+            if (res.data.error) {
+                toast.error(res.data.error);
+            }
+            setModel(false);
         } catch (err) {
             console.log(err);
         }
@@ -59,7 +68,7 @@ const Users = () => {
 
     return (
         <>
-            <div className={` ${modal ? 'blur-sm' : ''} flex max-w-7xl mx-auto`}>
+            <div className={` ${model ? 'blur-sm' : ''} flex max-w-7xl mx-auto`}>
                 <Navbar />
                 <div className='p-8 w-full'>
                     <h1 className='font-medium text-2xl'>Users</h1>
@@ -110,14 +119,14 @@ const Users = () => {
 
 
             {
-                modal && <div>
+                model && <div>
                     <div className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center">
                         <div className=" shadow-xl border relative bg-white rounded-lg">
                             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
                                 <h3 className="text-lg font-semibold text-gray-900">
                                     Edit User Details
                                 </h3>
-                                <button onClick={() => setModal(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-toggle="crud-modal">
+                                <button onClick={() => setModel(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-model-toggle="crud-model">
                                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                     </svg>
