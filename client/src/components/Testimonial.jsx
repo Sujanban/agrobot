@@ -3,7 +3,7 @@ import user2 from "../assets/user2.png"
 import { FaQuoteLeft } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
 
-const Tesimonial = () => {
+const Testimonial = () => {
     return (
         <section id='testimonials' className='bg-slate-100'>
             <div className='px-4 py-20 max-w-7xl mx-auto'>
@@ -38,4 +38,4 @@ const Tesimonial = () => {
     )
 }
 
-export default Tesimonial
+export default Testimonial

@@ -5,7 +5,7 @@ import Howitworks from '@/components/Howitworks'
 import Services from '@/components/Services'
 import Footer from '@/components/Footer'
 import CtaBanner from '@/components/CtaBanner'
-import Tesimonial from '@/components/Tesimonial'
+import Testimonial from '@/components/Testimonial'
 import Feature from '@/components/Feature'
 import Integration from '@/components/Integration'
 
@@ -18,7 +18,7 @@ const Index = () => {
       <Services/>
       <Feature/>
       {/* <Howitworks/> */}
-      <Tesimonial/>
+      <Testimonial/>
       <CtaBanner/>
       <Footer/>
     </>
