@@ -11,8 +11,9 @@ const Testimonials = () => {
     const [model, setModel] = useState(false);
     const [modelData, setModelData] = useState(null);
 
+    const [testimonials, setTestimonials] = useState([]);
+
     // rating
-    const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
 
     const [formData, setFormData] = useState({
@@ -20,6 +21,16 @@ const Testimonials = () => {
         message: '',
         rating: 0
     });
+
+    const fetchTestimonials = async () => {
+        try {
+            const res = await axios.get('/api/testimonials');
+            console.log(res.data);
+            setTestimonials(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     const addTestimonial = async (e) => {
         e.preventDefault();
@@ -29,6 +40,7 @@ const Testimonials = () => {
             console.log(res.data)
             if (res.data.message) {
                 toast.success(res.data.message);
+                fetchTestimonials();
                 setModel(false);
             }
             if (res.data.error) {
@@ -55,6 +67,13 @@ const Testimonials = () => {
             console.log(err);
         }
     };
+
+
+
+    useEffect(() => {
+        fetchTestimonials();
+    }, [])
+    
 
     return (
         <>
@@ -125,8 +144,12 @@ const Testimonials = () => {
 
 
                     <div>
-                        <TestimonialCard setModel={setModel} setModelData={setModelData} />
-                        <TestimonialCard setModel={setModel} setModelData={setModelData} />
+                        {
+                            testimonials && testimonials.map((test, index) => 
+                            <TestimonialCard key={index} data={test} setModel={setModel} setModelData={setModelData} deleteTestimonial={deleteTestimonial} />)
+                        }
+                        {/* <TestimonialCard setModel={setModel} setModelData={setModelData} />
+                        <TestimonialCard setModel={setModel} setModelData={setModelData} /> */}
                     </div>
                 </div>
             </div>
