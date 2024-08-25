@@ -10,11 +10,14 @@ const getTestimonials = async (req, res) => {
 };
 
 const addTestimonial = async (req, res) => {
-    const { name, email, message } = req.body;
+    const { email, message, rating } = req.body;
+    if(!email || !message || !rating) {
+        return res.json({ error: "All fields are required" });
+    }
     const newTestimonial = new Testimonial({
-        name,
         email,
         message,
+        rating
     });
     try {
         const savedTestimonial = await newTestimonial.save();

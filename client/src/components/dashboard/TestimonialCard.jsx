@@ -3,7 +3,7 @@ import { MdOutlineStarPurple500 } from "react-icons/md";
 import { VscTrash, VscEdit } from 'react-icons/vsc';
 
 
-const TestimonialCard = () => {
+const TestimonialCard = ({setModel, setModelData}) => {
     return (
         <div className='py-4 grid gap-4 border-b-2'>
             <div className='flex space-x-12'>
@@ -28,7 +28,7 @@ const TestimonialCard = () => {
                     <div className='max-w-xl'>
                         <p className='text-gray-600 text-sm'>I was amaized by the level of assistance received from the AI Chatbot provided by Agrobot. It quickly undeerstood my needs and provided me with the best possible solutions.</p>
                         <div className='py-4 flex space-x-4'>
-                            <button className='text-sm bg-emerald-100 text-emerald-600 border border-emerald-500  rounded px-2 py-1'>
+                            <button onClick={() => setModel(true)} className='text-sm bg-emerald-100 text-emerald-600 border border-emerald-500  rounded px-2 py-1'>
                                 <VscEdit className='inline-flex' /> <span>Edit Review</span>
                             </button>
                             <button className='text-sm bg-orange-100 text-orange-600 border border-orange-500  rounded px-2 py-1'>
