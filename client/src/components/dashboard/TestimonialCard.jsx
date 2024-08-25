@@ -3,7 +3,7 @@ import { MdOutlineStarPurple500 } from "react-icons/md";
 import { VscTrash, VscEdit } from 'react-icons/vsc';
 
 
-const TestimonialCard = ({ setModel, setModelData, data, deleteTestimonial }) => {
+const TestimonialCard = ({ setModel, handleEditClick, setEditModel, data, deleteTestimonial }) => {
     return (
         <div className='py-4 grid gap-4 border-b-2'>
             <div className='flex space-x-12'>
@@ -30,10 +30,10 @@ const TestimonialCard = ({ setModel, setModelData, data, deleteTestimonial }) =>
                     <div className='max-w-xl'>
                         <p className='text-gray-600 text-sm'>{data.message}</p>
                         <div className='py-4 flex space-x-4'>
-                            <button onClick={() => setModel(true)} className='text-sm bg-emerald-100 text-emerald-600 border border-emerald-500  rounded px-2 py-1'>
+                            <button onClick={() => handleEditClick(data)} className='text-sm bg-emerald-100 text-emerald-600 border border-emerald-500  rounded px-2 py-1'>
                                 <VscEdit className='inline-flex' /> <span>Edit Review</span>
                             </button>
-                            <button className='text-sm bg-orange-100 text-orange-600 border border-orange-500  rounded px-2 py-1'>
+                            <button onClick={() => deleteTestimonial(data._id)} className='text-sm bg-orange-100 text-orange-600 border border-orange-500  rounded px-2 py-1'>
                                 <VscTrash className='inline-flex' /> <span>Delete Review</span>
                             </button>
                         </div>

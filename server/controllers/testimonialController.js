@@ -27,9 +27,30 @@ const addTestimonial = async (req, res) => {
     }
 };
 
-const editTestimonial = async (req, res) => {};
+const editTestimonial = async (req, res) => {
+    const { id } = req.params;
+    const { email, message, rating } = req.body;
+    try {
+        const updatedTestimonial = await Testimonial.findByIdAndUpdate(
+            id,
+            { email, message, rating },
+            { new: true }
+        );
+        res.json({ message: "Testimonial updated successfully" });
+    } catch (error) {
+        res.json({ error: error.message });
+    }
+};
 
-const deleteTestimonial = async (req, res) => {};
+const deleteTestimonial = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletedTestimonial = await Testimonial.findByIdAndDelete(id);
+        res.json({ message: "Testimonial deleted successfully" });
+    } catch (error) {
+        res.json({ error: error.message });
+    }
+};
 
 module.exports = {
     getTestimonials,

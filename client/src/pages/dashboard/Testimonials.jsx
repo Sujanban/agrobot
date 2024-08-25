@@ -9,8 +9,6 @@ import { HashLoader } from 'react-spinners';
 
 const Testimonials = () => {
     const [model, setModel] = useState(false);
-    const [modelData, setModelData] = useState(null);
-
     const [testimonials, setTestimonials] = useState([]);
 
     // rating
@@ -22,10 +20,16 @@ const Testimonials = () => {
         rating: 0
     });
 
+    const calculateAverageRating = () => {
+        const totalRating = testimonials.reduce((acc, testimonial) => acc + testimonial.rating, 0);
+        const averageRating = totalRating / testimonials.length;
+        const roundedRating = Math.round(averageRating);
+        return roundedRating.toFixed(1);
+    }
+
     const fetchTestimonials = async () => {
         try {
             const res = await axios.get('/api/testimonials');
-            console.log(res.data);
             setTestimonials(res.data);
         } catch (err) {
             console.log(err);
@@ -34,10 +38,8 @@ const Testimonials = () => {
 
     const addTestimonial = async (e) => {
         e.preventDefault();
-        console.log(formData);
         try {
             const res = await axios.post(`/api/testimonials/addTestimonial`, formData);
-            console.log(res.data)
             if (res.data.message) {
                 toast.success(res.data.message);
                 fetchTestimonials();
@@ -51,14 +53,12 @@ const Testimonials = () => {
         }
     }
 
-
     const deleteTestimonial = async (id) => {
         try {
-            const res = await axios.delete(`/api/users/deleteTestimonial/${id}`);
-            console.log(res.data)
+            const res = await axios.delete(`/api/testimonials/deleteTestimonial/${id}`);
             if (res.data.message) {
                 toast.success(res.data.message);
-                getUsers();
+                fetchTestimonials();
             }
             if (res.data.error) {
                 toast.error(res.data.error);
@@ -68,12 +68,36 @@ const Testimonials = () => {
         }
     };
 
+    const [editModel, setEditModel] = useState(false);
+    const [editModelData, setEditModelData] = useState({});
+    const editTestimonial = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post(`/api/testimonials/editTestimonial/${editModelData._id}`, editModelData);
+            if (res.data.message) {
+                toast.success(res.data.message);
+                fetchTestimonials();
+                setEditModel(false);
+            }
+            if (res.data.error) {
+                toast.error(res.data.error);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleEditClick = (data) => {
+        setEditModel(true);
+        setEditModelData(data);
+    };
+
 
 
     useEffect(() => {
         fetchTestimonials();
     }, [])
-    
+
 
     return (
         <>
@@ -84,20 +108,22 @@ const Testimonials = () => {
                     <div className='py-4 grid grid-cols-3'>
                         <div className='p-4 rounded-xl shadow space-y-2'>
                             <p className='font-semibold'>Total Reviews</p>
-                            <h1 className='text-2xl font-semibold'>10K</h1>
+                            <h1 className='text-2xl font-semibold'>{testimonials && testimonials.length}</h1>
                             <p className='text-sm text-gray-500'>Growth in reviews</p>
                         </div>
 
                         <div className='p-4 rounded-xl shadow space-y-2'>
                             <p className='font-semibold'>Average Rating</p>
                             <div className='flex items-center gap-4'>
-                                <h1 className='text-2xl font-semibold'>4.0</h1>
+                                <h1 className='text-2xl font-semibold'>{calculateAverageRating()}</h1>
                                 <div className='flex'>
-                                    <MdOutlineStarPurple500 className='text-yellow-500' />
-                                    <MdOutlineStarPurple500 className='text-yellow-500' />
-                                    <MdOutlineStarPurple500 className='text-yellow-500' />
-                                    <MdOutlineStarPurple500 className='text-yellow-500' />
-                                    <MdOutlineStarPurple500 className='text-gray-300' />
+                                    {
+                                        Array(5).fill(0).map((_, index) =>
+                                            <MdOutlineStarPurple500
+                                                key={index}
+                                                className={index < calculateAverageRating() ? 'text-yellow-500' : 'text-gray-300'}
+                                            />)
+                                    }
                                 </div>
                             </div>
                             <p className='text-sm text-gray-500'>Average rating all time</p>
@@ -141,22 +167,14 @@ const Testimonials = () => {
                     <button onClick={() => setModel(true)} className='text-sm bg-emerald-100 text-emerald-600 border border-emerald-500  rounded px-2 py-1'>
                         <VscEdit className='inline-flex' /> <span>Add Testimonial</span>
                     </button>
-
-
                     <div>
                         {
-                            testimonials && testimonials.map((test, index) => 
-                            <TestimonialCard key={index} data={test} setModel={setModel} setModelData={setModelData} deleteTestimonial={deleteTestimonial} />)
+                            testimonials && testimonials.map((test, index) =>
+                                <TestimonialCard key={index} handleEditClick={handleEditClick} setEditModel={setEditModel} data={test} setModel={setModel} deleteTestimonial={deleteTestimonial} />)
                         }
-                        {/* <TestimonialCard setModel={setModel} setModelData={setModelData} />
-                        <TestimonialCard setModel={setModel} setModelData={setModelData} /> */}
                     </div>
                 </div>
             </div>
-
-
-
-
 
             {
                 model && <div>
@@ -217,6 +235,75 @@ const Testimonials = () => {
                                     type="submit" className="space-x-3 text-white flex items-center bg-stone-900 hover:bg-stone-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     <VscEdit />
                                     <p>Create Testimonial</p>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            {/* edit testimonial model */}
+            {
+                editModel && <div>
+                    <div className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center">
+                        <div className=" shadow-xl border relative bg-white rounded-lg w-full max-w-lg">
+                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
+                                <h3 className="text-lg font-semibold text-gray-900">
+                                    Edit Testimonial
+                                </h3>
+                                <button onClick={() => setEditModel(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-model-toggle="crud-model">
+                                    <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <form className="p-4 md:p-5">
+                                <div className="grid gap-4 mb-4 grid-cols-2">
+                                    <div className="col-span-2">
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Write a short Review</label>
+                                        <textarea id="message"
+                                            onChange={(e) => setEditModelData({ ...editModelData, message: e.target.value })}
+                                            value={editModelData.message}
+                                            rows="4"
+                                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 
+                                        " placeholder="Write a short Review here"></textarea>
+                                    </div>
+
+                                    <div>
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Rating
+                                        </label>
+                                        <div className="flex">
+                                            {[...Array(5)].map((star, index) => {
+                                                const currentRating = index + 1;
+                                                return (
+                                                    <button
+                                                        type="button"
+                                                        key={index}
+                                                        onClick={(e) => setEditModelData({ ...editModelData, rating: currentRating })}
+                                                        onMouseEnter={() => setHover(currentRating)}
+                                                        onMouseLeave={() => setHover(0)}
+                                                    >
+                                                        <MdOutlineStarPurple500
+                                                            className="star"
+                                                            color={
+                                                                currentRating <= (hover || editModelData.rating)
+                                                                    ? "#f59e0b" // yellow-500
+                                                                    : "#9ca3af" // gray-500
+                                                            }
+                                                            size={24}
+                                                        />
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onClick={(e) => editTestimonial(e)}
+                                    type="submit" className="space-x-3 text-white flex items-center bg-stone-900 hover:bg-stone-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                    <VscEdit />
+                                    <p>Update Testimonial</p>
                                 </button>
                             </form>
                         </div>

@@ -17,7 +17,7 @@ router.use(
 
 router.get("/", getTestimonials);
 router.post("/addTestimonial", addTestimonial);
-router.post("/editTestimonial", editTestimonial);
+router.post("/editTestimonial/:id", editTestimonial);
 router.delete("/deleteTestimonial/:id", deleteTestimonial);
 
 module.exports = router;
