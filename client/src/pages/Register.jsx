@@ -36,7 +36,8 @@ const Register = () => {
           <h1 className='px-4 py-2 text-3xl font-medium'>
             We make farming easy
           </h1>
-          <p className='px-4 py-2 text-xl '>We'll handle your worldwide compliance, payroll, and benefits, so you can fast-track your international expansion.
+          <p className='px-4 py-2 text-xl '>
+            We provide all in one functionaluity including AI powered chatbot, climate insight along with the disease predictor feature. Join us and improve the way you farm.
           </p>
           <img className='w-full object-cover' src={signupimg} alt="" />
         </div>
@@ -56,7 +57,7 @@ const Register = () => {
               <div>
                 <input
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  type="text" placeholder='E-mail'
+                  type="email" placeholder='E-mail'
                   className='w-full px-4 py-3 border border-gray-400 rounded-md text-sm' />
               </div>
               <div className='relative'>
