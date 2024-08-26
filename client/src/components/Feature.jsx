@@ -17,14 +17,15 @@ const Feature = () => {
                 {/* feature section header */}
                 <div className='flex justify-between space-x-4'>
                     <div className='max-w-sm'>
-                        <p>Throughout your customers entire buying journey, Agrobot ai will allow you to delight them at every step of the way, from their first visit to the final purchase.</p>
-                        <Link className='my-4 text-sm px-8 py-3 rounded-full text-white bg-stone-900 flex justify-center items-center space-x-2'>
+                        <p>Throughout the customers journey, Agrobot will allow you to relevance at every step of the way, from their first visit to the final usages.</p>
+                        <Link to={"/login"} className='my-4 text-sm px-8 py-3 rounded-full text-white bg-stone-900 flex justify-center items-center space-x-2'>
                             <span>Get Started</span>
                             <MdArrowOutward />
                         </Link>
                     </div>
                     <div className='px-8 bg-white rounded-3xl'>
-                        <h1 className='text-5xl font-medium leading-normal'><span className='bg-green-200 px-4 py-1 rounded-tl-xl rounded-br-xl'>Redefining agriculture</span> and Enhancing crops yeilds.
+                        <h1 className='text-5xl font-medium leading-normal'>
+                            <span className='bg-green-200 px-4 py-1 rounded-tl-xl rounded-br-xl'>Redefining agriculture</span> and Enhancing crops yeilds.
                         </h1>
                         <button className='my-4 inline-flex px-2 border border-stone-900 rounded-full'>
                             <button className='px-2 border border-stone-900 rounded-full'>
@@ -42,16 +43,16 @@ const Feature = () => {
                 <div className='my-4 p-8 grid grid-cols-3 space-x-4 bg-white rounded-3xl'>
                     <div className='space-y-4'>
                         <div onClick={() => setOpenTab(1)} className={`${openTab === 1 ? 'bg-slate-200' : ''} p-4 rounded-xl cursor-pointer space-y-2`}>
-                            <h1 className='text-xl font-semibold'>Engaging</h1>
-                            <p className='text-sm text-black/70'>Reach out to visitors proactivity using personalized chgatbot greetings. Turn website visitors into sales opportunities.</p>
+                            <h1 className='text-xl font-semibold'>Clean UI</h1>
+                            <p className='text-sm text-black/70'>We provide you with top notch user interface for your seemless experiance on  user interraction.</p>
                         </div>
                         <div onClick={() => setOpenTab(2)} className={`${openTab === 2 ? 'bg-slate-200' : ''} p-4 rounded-xl cursor-pointer space-y-2`}>
-                            <h1 className='text-xl font-semibold'>Nuture</h1>
-                            <p className='text-sm text-black/70'>Lead customers to a sale through the recommended purchases and tailored offerings.</p>
+                            <h1 className='text-xl font-semibold'>Relevance</h1>
+                            <p className='text-sm text-black/70'>Our platform excels in providing robust data support, ensuring timely and relevant insights that empower informed decision-making.</p>
                         </div>
                         <div onClick={() => setOpenTab(3)} className={`${openTab === 3 ? 'bg-slate-200' : ''} p-4 rounded-xl cursor-pointer space-y-2`}>
                             <h1 className='text-xl font-semibold'>Engaging</h1>
-                            <p className='text-sm text-black/70'>Reach out to visitors proactivity using personalized chgatbot greetings. Turn website visitors into sales opportunities.</p>
+                            <p className='text-sm text-black/70'>We are equiped with industry standard tools and technologies for an engaging user experiance.</p>
                         </div>
                     </div>
                     <div className='col-span-2 max-h-[400px] p-8 feature-background rounded-3xl'>

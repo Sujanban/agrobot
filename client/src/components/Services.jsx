@@ -1,56 +1,60 @@
 import React, { useState } from 'react'
-import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-import { MdArrowOutward } from "react-icons/md";
+import { BsArrowRightCircle } from "react-icons/bs";
+import rain from '../assets/rain.png'
+import chat from '../assets/chat.png'
+import plant from '../assets/plant.png'
+
 
 
 const Services = () => {
-    const [activeTab, setActiveTab] = useState(1);
     return (
-        <section id='services' className='bg-slate-100'>
-            <div className='px-4 py-20 max-w-7xl mx-auto '>
-                <h1 className='text-4xl font-medium max-w-md'>
-                    <span className='text-green'>Smart Farming</span>
-                    : We Provides Best Services For Your Garden</h1>
-                <div className='py-8 pb-20 flex items-center justify-between gap-4 flex-wrap'>
-                    <div className='flex flex-col text-sm space-y-2'>
-                        <li className='list-none text-3xl'>
-                            <button onClick={() => setActiveTab(1)} className={`px-4 py-2 rounded-full ${activeTab === 1 ? 'bg-stone-9000 ' : 'text-gray-400'} `}>01. Farm Bot</button>
-                        </li>
-                        <li className='list-none text-3xl'>
-                            <button onClick={() => setActiveTab(2)} className={`px-4 py-2 rounded-full ${activeTab === 2 ? 'bg-stone-9000 ' : 'text-gray-400'} `}>02. Weather Insight</button>
-                        </li>
-                        <li className='list-none text-3xl'>
-                            <button onClick={() => setActiveTab(3)} className={`px-4 py-2 rounded-full ${activeTab === 3 ? 'bg-stone-9000 ' : 'text-gray-400'} `}>03. Disease Detection</button>
-                        </li>
-                    </div>
+        <div id='services' className='bg-slate-100'>
+            <div className='px-4 py-20 max-w-7xl w-full mx-auto'>
+                <div className='flex space-x-12'>
                     <div>
-                        <FaArrowRightLong size={40} />
+                        <span className='p-4 font-bold bg-green-300 uppercase  max-w-md'>Our Services</span>
+                        <p className='py-4 text-3xl font-medium leading-normal'>We provide a variety of services to help you get started. </p>
                     </div>
-                    {
-                        activeTab === 1 &&
-                        <div className='relative shadow flex  gap-4 max-w-3xl flex-wrap'>
-                            <img className='w-[700px] h-[500px] object-cover rounded-xl' src="https://plus.unsplash.com/premium_vector-1682307904375-1e8b895c745c?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                            <Link className='m-2 px-4 py-2 shadow border rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
-                        </div>
-                    }
-                    {
-                        activeTab === 2 &&
-                        <div className='relative shadow'>
-                            <img className='w-[700px] h-[500px] object-cover rounded-xl' src="https://plus.unsplash.com/premium_vector-1714142580885-97d3f0e39f98?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                            <Link className='m-2 px-4 py-2 shadow border rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
-                        </div>
-                    }
-                    {
-                        activeTab === 3 &&
-                        <div className='relative shadow'>
-                            <img className=' w-[700px] h-[500px] object-cover rounded-xl' src="https://plus.unsplash.com/premium_vector-1711987356317-e765e719f673?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                            <Link className='m-2 px-4 py-2 shadow border rounded-full bg-slate-200 hover:bg-slate-300 text-sm flex items-center space-x-2 absolute bottom-0 left-0' to='/'><span>Try now</span> <MdArrowOutward /></Link>
-                        </div>
-                    }
+                    <div className='p-8 max-w-2xl block bg-slate-200'>
+                        <p>we offer services that can help you improve yours crops yeild. We are the forefront of Smart AI development, revolutingly the way farmers and business grow their crops more effectively.</p>
+                    </div>
+                </div>
+
+
+                <div className='py-12 space-y-4'>
+                    <div
+                        className='group relative hover:italic bg-green-100 cursor-pointer hover:bg-custom-green  transition-all duration-100 ease-in-out border-b-2 border-stone-500'>
+                        <Link to='/weather'
+                            className='hover:translate-x-12 transition-all duration-100 ease-in-out p-12 flex items-center justify-between'>
+                            <h1 className='text-5xl font-medium'>Weather Forecast</h1>
+                            <BsArrowRightCircle size={40} className='text-slate-800' />
+                        </Link>
+                        <img className='absolute z-50 -top-[70px] right-[80px] h-60 hidden group-hover:block rounded-xl grayscale' src={rain} alt="" />
+                    </div>
+                    <div
+                        className='group relative hover:italic bg-green-200 cursor-pointer hover:bg-custom-green  transition-all duration-100 ease-in-out border-b-2 border-stone-500'>
+                        <Link to='/farmbot'
+                            className='hover:translate-x-12 transition-all duration-100 ease-in-out p-12 flex items-center justify-between'>
+                            <h1 className='text-5xl font-medium'>Farming Chatbot</h1>
+                            <BsArrowRightCircle size={40} className='text-slate-800' />
+                        </Link>
+                        <img className='absolute z-50 -top-[70px] right-[80px] h-60 hidden group-hover:block rounded-xl grayscale' src={chat} alt="" />
+
+                    </div>
+                    <div
+                        className='group relative hover:italic bg-green-300 cursor-pointer hover:bg-custom-green  transition-all duration-100 ease-in-out border-b-2 border-stone-500'>
+                        <Link to='/diseasepredictor'
+                            className='hover:translate-x-12 transition-all duration-100 ease-in-out p-12 flex items-center justify-between'>
+                            <h1 className='text-5xl font-medium'>Plant Disease Detection</h1>
+                            <BsArrowRightCircle size={40} className='text-slate-800' />
+                        </Link>
+                        <img className='absolute -top-[70px] right-[80px] h-60 hidden group-hover:block rounded-xl grayscale' src={plant} alt="" />
+
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 
