@@ -92,16 +92,13 @@ const Testimonials = () => {
         setEditModelData(data);
     };
 
-
-
     useEffect(() => {
         fetchTestimonials();
     }, [])
 
-
     return (
         <>
-            <div className={` ${model ? 'blur-sm' : ''} flex max-w-7xl mx-auto`}>
+            <div className={` ${model || editModel ? 'blur-sm' : ''} flex max-w-7xl mx-auto`}>
                 <Navbar />
                 <div className='p-8 w-full'>
                     <h1 className='font-medium text-2xl'>Testimonials</h1>

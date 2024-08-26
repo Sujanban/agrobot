@@ -38,19 +38,25 @@ const Weather = () => {
         fetchWeather();
     }, [])
 
-    if (loading) {
-        return (
-            <div className='flex justify-center items-center h-screen'>
-                <HashLoader color="#00F97C"  />
-            </div>
-        )
-    }
+    // if (loading) {
+    //     return (
+    //         <div className='flex justify-center items-center h-screen'>
+    //             <HashLoader color="#047857" size={30} />
+    //         </div>
+    //     )
+    // }
 
 
     return (
         <div className='flex max-w-7xl mx-auto'>
             <Navbar />
             <div className='h-screen overflow-auto p-8 w-full space-y-4'>
+                {
+                    loading &&
+                    <div className='flex justify-center items-center h-full'>
+                        <HashLoader color="#047857" size={30} />
+                    </div>
+                }
                 <h1 className='font-semibold text-2xl'>Weather</h1>
                 <div className='flessx grid grid-cols-3 gap-4'>
                     <div className='flex-grow space-y-4 bg-blasck rounded-xl border shadow'>

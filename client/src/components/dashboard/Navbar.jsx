@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { TiWeatherShower } from "react-icons/ti";
 import { SiDependabot } from "react-icons/si";
 import { FaDisease } from "react-icons/fa";
@@ -11,11 +11,20 @@ import { FiUsers } from "react-icons/fi";
 import { RiHome6Line } from "react-icons/ri";
 import { MdRateReview } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '@/app/feature/userSlice';
 
 
 const Navbar = () => {
     const [toggleNavbar, setToggleNavbar] = useState(false);
     const [minNavbar, setMinNavbar] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate("/login");
+      };
     const navigation = [
         {
             name: 'Home',
@@ -112,7 +121,7 @@ const Navbar = () => {
                 </div>
 
                 <div className='py-4 grid gap-2'>
-                    <button className={`p-2 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`}>
+                    <button onClick={handleLogout} className={`p-2 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`}>
                         <MdLogout className='text-xl' />
                         {!minNavbar && <span>Logout</span>}
                     </button>
