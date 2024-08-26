@@ -6,16 +6,18 @@ import TestimonialCard from '../../components/dashboard/TestimonialCard';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { HashLoader } from 'react-spinners';
+import { useSelector } from 'react-redux';
 
 const Testimonials = () => {
     const [model, setModel] = useState(false);
     const [testimonials, setTestimonials] = useState([]);
+    const {email} = useSelector((state) => state.user.data);
 
     // rating
     const [hover, setHover] = useState(0);
 
     const [formData, setFormData] = useState({
-        email: 'sujanban',
+        email: email,
         message: '',
         rating: 0
     });
@@ -39,6 +41,7 @@ const Testimonials = () => {
     const addTestimonial = async (e) => {
         e.preventDefault();
         try {
+            console.log(formData)
             const res = await axios.post(`/api/testimonials/addTestimonial`, formData);
             if (res.data.message) {
                 toast.success(res.data.message);
@@ -71,6 +74,7 @@ const Testimonials = () => {
     const [editModel, setEditModel] = useState(false);
     const [editModelData, setEditModelData] = useState({});
     const editTestimonial = async (e) => {
+        console.log(formData)
         e.preventDefault();
         try {
             const res = await axios.post(`/api/testimonials/editTestimonial/${editModelData._id}`, editModelData);

@@ -20,12 +20,41 @@ const Navbar = () => {
     const [minNavbar, setMinNavbar] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.data);
 
     const handleLogout = () => {
         dispatch(logout());
         navigate("/login");
-      };
+    };
     const navigation = [
+        {
+            name: 'Home',
+            path: '/dashboard',
+            icon: <RiHome6Line />
+        },
+        {
+            name: 'Weather',
+            path: '/weather',
+            icon: <TiWeatherShower />
+        },
+        {
+            name: 'Farm Bot',
+            path: '/farmbot',
+            icon: <SiDependabot />
+        },
+        {
+            name: 'Disease Predictor',
+            path: '/diseasepredictor',
+            icon: <FaDisease />
+        },
+        {
+            name: 'Testimonials',
+            path: '/testimonials',
+            icon: <MdRateReview />
+        }
+    ]
+
+    const authNavigation = [
         {
             name: 'Home',
             path: '/dashboard',
@@ -105,7 +134,7 @@ const Navbar = () => {
                         <input className='p-2 w-full rounded-md outline-none' type="search" placeholder="Search..." />
                     </div>
                     {
-                        navigation.map(item => (
+                        user && user.role == 0 ? navigation.map(item => (
                             <NavLink to={item.path} className={({ isActive }) =>
                                 isActive ?
                                     `p-2 text-sm font-medium rounded-md space-x-4 shadow border flex items-center`
@@ -117,6 +146,20 @@ const Navbar = () => {
                                 {!minNavbar && <span>{item.name}</span>}
                             </NavLink>
                         ))
+                            :
+
+                            authNavigation.map(item => (
+                                <NavLink to={item.path} className={({ isActive }) =>
+                                    isActive ?
+                                        `p-2 text-sm font-medium rounded-md space-x-4 shadow border flex items-center`
+                                        :
+                                        `p-2 text-sm font-medium rounded-md space-x-4 hover:bg-stone-100 transition-all duration-200 ease-in-out flex items-center`
+
+                                } key={item.name}>
+                                    <span className='text-xl'>{item.icon}</span>
+                                    {!minNavbar && <span>{item.name}</span>}
+                                </NavLink>
+                            ))
                     }
                 </div>
 

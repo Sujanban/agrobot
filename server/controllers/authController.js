@@ -58,7 +58,7 @@ const login = async (req, res) => {
     }
 
     // jwt
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET_KEY, {
+    const token = jwt.sign({ id: user._id, role: user.role, email: user.email }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
     });
     const userData = await User.findById(user._id).select("-password");

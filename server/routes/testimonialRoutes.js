@@ -1,10 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+const { checkAuth, isAdmin, isTestimonailOwner } = require("../middlewares/userAuth");
 const {
-    getTestimonials,
-    addTestimonial,
-    editTestimonial,
-    deleteTestimonial,
+  getTestimonials,
+  addTestimonial,
+  editTestimonial,
+  deleteTestimonial,
 } = require("../controllers/testimonialController");
 const router = express.Router();
 
@@ -15,9 +16,9 @@ router.use(
   })
 );
 
-router.get("/", getTestimonials);
-router.post("/addTestimonial", addTestimonial);
-router.post("/editTestimonial/:id", editTestimonial);
-router.delete("/deleteTestimonial/:id", deleteTestimonial);
+router.get("/",checkAuth, getTestimonials);
+router.post("/addTestimonial",checkAuth, addTestimonial);
+router.post("/editTestimonial/:id", checkAuth, isTestimonailOwner, editTestimonial);
+router.delete("/deleteTestimonial/:id", checkAuth, isTestimonailOwner, deleteTestimonial);
 
 module.exports = router;

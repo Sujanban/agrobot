@@ -7,11 +7,12 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const testimonialRoutes = require("./routes/testimonialRoutes");
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 const app = express();
 app.use(express.json());
-
+app.use(cookieParser())
 const PORT = process.env.PORT || 5000;
 const DATABASE = process.env.DATABASE;
 

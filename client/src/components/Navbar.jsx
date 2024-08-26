@@ -6,9 +6,11 @@ import { TbHotelService } from "react-icons/tb";
 import { FaQuestion } from "react-icons/fa6";
 import { SiAboutdotme } from "react-icons/si";
 import { MdArrowOutward } from "react-icons/md";
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-  const [toggleNavbar, setToggleNavbar] = useState(false)
+  const [toggleNavbar, setToggleNavbar] = useState(false);
+  const user = useSelector((state) => state.user.data);
   const menuItems = [
     {
       id: 1,
@@ -27,7 +29,7 @@ const Navbar = () => {
       name: 'Features',
       icon: <FaQuestion />,
       path: '#features'
-    },{
+    }, {
       id: 4,
       name: 'Testimonials',
       icon: <SiAboutdotme />,
@@ -57,14 +59,26 @@ const Navbar = () => {
           }
         </nav>
 
-        <div className='flex items-center space-x-2'>
-          <Link to={"/login"} className='text-sm rounded-full transition-all durration-200 ease-in-out hover:bg-custom-green px-6 py-2'>Login</Link>
-          <Link to={"/register"}
-            className='text-sm rounded-full transition-all durration-200 ease-in-out bg-custom-green px-6 py-2'>
-            Register
-            <MdArrowOutward className='inline-flex ml-2' />
-          </Link>
-        </div>
+        {
+          user ? (
+            <Link to={"/dashboard"} className='flex items-center space-x-1 text-sm'>
+              <span>Dashboard</span>
+              <MdArrowOutward />
+            </Link>
+          ) : (
+            <div className='flex items-center space-x-2'>
+              <Link
+                to={"/login"}
+                className='text-sm rounded-full transition-all durration-200 ease-in-out hover:bg-custom-green px-6 py-2'>Login</Link>
+              <Link
+                to={"/register"}
+                className='text-sm rounded-full transition-all durration-200 ease-in-out bg-custom-green px-6 py-2'>
+                Register
+                <MdArrowOutward className='inline-flex ml-2' />
+              </Link>
+            </div>
+          )
+        }
       </div>
 
 
