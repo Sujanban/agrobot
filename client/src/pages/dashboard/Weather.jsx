@@ -23,7 +23,7 @@ const Weather = () => {
             const data3 = await response3.json();
             setWeather(data3);
             setLoading(false)
-            console.log(data3);
+            // console.log(data3);
         } catch (err) {
             console.log(err)
         }

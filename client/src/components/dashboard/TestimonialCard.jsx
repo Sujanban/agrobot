@@ -11,7 +11,7 @@ const TestimonialCard = ({ setModel, handleEditClick, setEditModel, data, delete
                     <img className='w-20 h-20 ' src="http://localhost:5173/src/assets/user2.png" alt="" />
                     <div>
                         <h1 className='font-semibold capitalize'>{data.email}</h1>
-                        <p className='text-sm text-gray-500'>CEO of Agrobot</p>
+                        <p className='text-sm text-gray-500'>Agrobot User</p>
                     </div>
                 </div>
                 <div className='space-y-4'>

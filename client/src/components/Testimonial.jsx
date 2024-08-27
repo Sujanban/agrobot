@@ -10,7 +10,7 @@ import { MdOutlineStarPurple500, MdOutlineStarOutline, MdOutlineStarHalf } from 
 const Testimonial = () => {
     const [testimonials, setTestimonials] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
-    console.log(testimonials)
+    // console.log(testimonials)
     const fetchTestimonials = async () => {
         try {
             const res = await axios.get('/api/testimonials');
@@ -60,15 +60,16 @@ const Testimonial = () => {
                                         <FaQuoteLeft className='inline-flex mr-2' size={15} />
                                         Client Testimonial
                                     </button>
-                                    <div className='pr-8 flex space-x-2'>
+                                    <div className='pr-4 flex space-x-2 items-top'>
                                         {
                                             Array(5).fill(0).map((_, index) =>
                                                 <MdOutlineStarPurple500
-                                                size={20}
+                                                    size={20}
                                                     key={index}
                                                     className={index < testimonials[currentIndex].rating ? 'text-yellow-500' : 'text-gray-300'}
                                                 />)
                                         }
+                                        <p className='text-sm'>{new Date(testimonials[currentIndex].createdAt).toDateString()}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -76,7 +77,6 @@ const Testimonial = () => {
                                         {testimonials[currentIndex].message.slice(0, 190)}
                                         {testimonials[currentIndex].message.length > 190 ? "..." : ""}</h1>
                                 </div>
-
                             </div>
                         ) : (
                             <p>Loading testimonials...</p>
